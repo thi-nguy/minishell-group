@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sub_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <marvin@42.fr>                  +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 18:56:32 by idamoutto         #+#    #+#             */
-/*   Updated: 2021/09/11 18:56:34 by idamoutto        ###   ########.fr       */
+/*   Updated: 2021/09/13 15:35:38 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/parsing.h"
+#include "minishell.h"
 
 char	*ft_getenv(char *str)
 {

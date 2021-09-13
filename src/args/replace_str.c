@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   replace_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <marvin@42.fr>                  +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 19:02:07 by idamoutto         #+#    #+#             */
-/*   Updated: 2021/09/11 19:02:08 by idamoutto        ###   ########.fr       */
+/*   Updated: 2021/09/13 15:35:44 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/parsing.h"
+#include "minishell.h"
 
 void	ft_replace_str(char **args unsigned int start_index,
 	unsigned int end_index, char *value)

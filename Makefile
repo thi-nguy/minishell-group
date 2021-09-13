@@ -12,6 +12,10 @@ NAME = minishell
 
 SRC = 	./src/main.c\
 		./src/built-ins/pwd.c\
+		# ./src/args/is_inhibited.c ./src/args/parse.c\
+		# ./src/args/replace_str.c ./src/args/split_args.c\
+		# ./src/args/sub_env.c ./src/args/update.c\
+		# ./src/utils/utils.c\
 
 OBJ = $(SRC:.c=.o)
 

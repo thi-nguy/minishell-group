@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   split_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <marvin@42.fr>                  +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 18:33:05 by idamoutto         #+#    #+#             */
-/*   Updated: 2021/09/11 18:33:08 by idamoutto        ###   ########.fr       */
+/*   Updated: 2021/09/13 15:35:41 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/parsing.h"
+#include "minishell.h"
 
 void	add_arg(char **args, char **tmp)
 {

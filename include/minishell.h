@@ -4,8 +4,10 @@
 #include <stdio.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+#include <stdbool.h>
 
 # include "../libft/libft.h"
+# include "parsing.h"
 # include "struct.h"
 
 void    print_working_directory(t_command *cmd);

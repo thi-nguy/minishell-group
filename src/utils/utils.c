@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <marvin@42.fr>                  +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 18:48:22 by idamoutto         #+#    #+#             */
-/*   Updated: 2021/09/11 18:48:24 by idamoutto        ###   ########.fr       */
+/*   Updated: 2021/09/13 15:35:24 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/parsing.h"
+#include "minishell.h"
 
 bool	ft_isutil(char *str)
 {

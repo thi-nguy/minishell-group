@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <marvin@42.fr>                  +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 17:37:30 by idamoutto         #+#    #+#             */
-/*   Updated: 2021/09/11 17:37:32 by idamoutto        ###   ########.fr       */
+/*   Updated: 2021/09/13 15:35:46 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../../../includes/parsing.h"
+#include "minishell.h"
 
 bool ft_valid(char *str)
 {

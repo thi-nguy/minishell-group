@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <marvin@42.fr>                  +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 13:56:36 by idamoutto         #+#    #+#             */
-/*   Updated: 2021/09/09 13:56:38 by idamoutto        ###   ########.fr       */
+/*   Updated: 2021/09/13 15:34:32 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define  PARSING_H
-# include "minishell.h"
+
 typedef struct s_parsing
 {
 	bool	inhibited;

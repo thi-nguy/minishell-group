@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is_inhibited.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <marvin@42.fr>                  +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 19:00:08 by idamoutto         #+#    #+#             */
-/*   Updated: 2021/09/11 19:00:10 by idamoutto        ###   ########.fr       */
+/*   Updated: 2021/09/13 15:35:33 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/parsing.h"
+#include "minishell.h"
 
 bool	is_inhibited(const char *str, int char_index)
 {
