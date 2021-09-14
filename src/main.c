@@ -17,5 +17,6 @@ int	main(int ac, char **av, char **ev)
 		free(line);
 		line = readline("minishell > ");
 	}
+	free_memory(command.env_head);
 	return (0);
 }
