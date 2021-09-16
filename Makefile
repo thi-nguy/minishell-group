@@ -21,7 +21,7 @@ SRC = 	./src/main.c\
 		./src/args/remove_backslash_and_quote.c\
 		./src/args/replace_str.c ./src/args/split_args.c\
 		./src/args/sub_env.c ./src/args/sub_q.c ./src/args/sub_tilde.c\
-		./src/args/type_args.c ./src/args/update.c\
+		./src/args/trim_args.c ./src/args/update.c\
 		./src/cmds/add_calloc.c ./src/cmds/command_valid.c ./src/cmds/double_char.c\
 		./src/cmds/free_command.c ./src/cmds/ft_is_in_set.c ./src/cmds/split_command.c\
 		./src/redirection/double_left_chevron.c ./src/redirection/double_right_chevron.c\

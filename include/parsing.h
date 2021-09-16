@@ -19,7 +19,7 @@ char	**parsing(char *str);
 bool	ft_valid(char *str);
 void	update_struct(char c, t_parsing *parsing);
 void	update_struct2(char c, t_parsing *parsing);
-void    type_args(char **args, const char *set);
+void    trim_args(char **args, const char *set);
 bool	is_inhibited(const char *str, int char_index);
 int     count_args(char *str);
 void 	remove_quote(char **args);

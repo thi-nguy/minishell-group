@@ -66,7 +66,7 @@ char    **parsing(char *str)
     i = -1;
     while (parsing[++i])
     {
-        type_args(&parsing[i], "\t\n\v\f\r");
+        trim_args(&parsing[i], "\t\n\v\f\r");
         sub_env(&parsing[i]);
         sub_q(&parsing[i]);
         sub_tilde(&parsing[i]);
