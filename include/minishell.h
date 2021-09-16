@@ -17,5 +17,6 @@ t_env	*add_to_empty(t_env *head, char *data);
 void    print_list(t_env *head);
 int     count_env_var(char **env);
 void	free_memory(t_env *env_list);
+void    print_env_var(t_command *cmd);
 
 #endif

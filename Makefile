@@ -2,7 +2,7 @@ LIBFT = -L./libft/
 
 LINK = -lft -lreadline
 
-FLAGS = -g -fsanitize=address -Wall -Wextra -Werror 
+FLAGS = -g -fsanitize=address -Wall -Wextra -Werror
 
 CC = gcc -I./include/
 
@@ -12,6 +12,7 @@ NAME = minishell
 
 SRC = 	./src/main.c\
 		./src/built-ins/pwd.c\
+		./src/built-ins/env.c\
 		./src/utils/parse_env_to_linked_list.c\
 		./src/utils/utils_outside_project.c\
 		./src/utils/free_memory.c\

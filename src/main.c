@@ -22,6 +22,8 @@ int	main(int ac, char **av, char **ev)
 			free(path);
 			path = NULL;
 		}
+		else if (ft_strcmp(line, "env") != 0)
+			print_env_var(&command);
 		else
 			printf("Ok\n");
 		free(line);
