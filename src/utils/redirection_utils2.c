@@ -24,7 +24,7 @@ void	ft_exec_redir(t_command *command)
 		dup2(command->f_out, 1);
 		close(command->f_out);
 	}
-	try_exec(command->args);
+	//try_exec(command->args);
 	close(1);
 	close(0);
 	exit(0);

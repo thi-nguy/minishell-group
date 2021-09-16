@@ -7,6 +7,7 @@
 #include <stdbool.h>
 # include <fcntl.h>
 # include <sys/types.h>
+# include <sys/stat.h>
 
 # include "../libft/libft.h"
 # include "struct.h"

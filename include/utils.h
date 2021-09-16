@@ -38,4 +38,6 @@ void	red_left(t_command  **command, int *i);
 
 bool	is_suffix(char *str, char *suffix);
 char	**ft_get_paths(void);
+void	ft_error2(char *msg, char *msg2, char *error_msg, int error_code);
+
 #endif

@@ -17,7 +17,7 @@ void	add_value(char **str, char *new_value)
 	char *tmp;
 
 	tmp = ft_strjoin(*str, new_value);
-	fre(*str);
+	free(*str);
 	*str = tmp;
 }
 

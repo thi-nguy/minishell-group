@@ -42,16 +42,16 @@ int ft_create_file(char *str, bool should_close)
     return (fd);
 }
 
-int ft_open_file(char *str)
+int	ft_open_file(char *str)
 {
-    int         fd;
-    struct stat buffer;
-    int         status;
+	int			fd;
+	struct stat	buffer;
+	int			status;
 
-    fd = open(str, &buffer);
-    if (status == -1)
-    {
-        status = stat(str, &buffer);
+	fd = open(str, O_RDONLY);
+	if (fd == -1)
+	{
+		status = stat(str, &buffer);
 		if (status == -1)
 			ft_error2("cd", str, "No such file or directory", 1);
 		else if (status == 0)

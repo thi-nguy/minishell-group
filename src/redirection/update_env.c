@@ -13,7 +13,7 @@
 
 #include "../../include/minishell.h"
 
-static bool is_set_env(char **env)
+static bool is_set_env(char *env)
 {
     int i;
     

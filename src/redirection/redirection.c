@@ -109,7 +109,7 @@ void    try_command(t_command **command)
             av = command[i]->args;
             if (count_array(av) > 0)
                 update_env("_", av[count_array(av) - 1]);
-            try_exec(av);
+            //try_exec(av);
         }
         i++;
     }

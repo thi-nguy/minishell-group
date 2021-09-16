@@ -13,12 +13,24 @@
 
 #include "../../include/minishell.h"
 
-void    ft_error(char *msg, char *error_msg, int error_code)
+void	ft_error(char *msg, char *error_msg, int error_code)
 {
-    g_global.return_code = error_code;
-    ft_putstr_fd("minishell: ", 2);
-    ft_putstr_fd(msg, 2);
-    ft_putstr_fd("; ", 2);
-    ft_putstr_fd(error_msg, 2);
-    ft_putstr_fd('\n', 2);
+	g_global.return_code = error_code;
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putstr_fd(error_msg, 2);
+	ft_putchar_fd('\n', 2);
+}
+
+void	ft_error2(char *msg, char *msg2, char *error_msg, int error_code)
+{
+	g_global.return_code = error_code;
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putstr_fd(msg2, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putstr_fd(error_msg, 2);
+	ft_putchar_fd('\n', 2);
 }

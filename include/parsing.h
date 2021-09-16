@@ -53,5 +53,6 @@ void    double_left_chevron(t_command *command1, t_command *end_keyword);
 void    double_left_chevron(t_command *command1, t_command *end_keyword);
 void    ft_pipe(t_command *command1, t_command *command2);
 void    single_right_chevron(t_command *command1, t_command *command_file);
+void	double_right_chevron(t_command  *command1, t_command  *command_file);
 
 #endif
