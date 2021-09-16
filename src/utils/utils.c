@@ -10,11 +10,53 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../include/minishell.h"
+
+void	add_value(char **str, char *new_value)
+{
+	char *tmp;
+
+	tmp = ft_strjoin(*str, new_value);
+	fre(*str);
+	*str = tmp;
+}
 
 bool	ft_isutil(char *str)
 {
 	while (ft_isspace(*str))
 		str++;
 	return (*str);
+}
+
+void	ft_safe_free(void **p)
+{
+	if (*p)
+	{
+		free(*p);
+		*p = NULL;
+	}
+}
+
+bool	ft_streql(const char *s1, const char *s2)
+{
+	if (!s1 || !s2)
+		return (false);
+	while (*s1 == *s2 && *s1)
+	{
+		s1++;
+		s2++;
+	}
+	return (*s1 == *s2);
+}
+
+void	free_array(char **array)
+{
+	int i;
+
+	if (!array)
+		return ;
+	i = -1;
+	while (array[++i])
+		free(array[i]);
+	free(array);
 }

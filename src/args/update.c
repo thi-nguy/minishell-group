@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include "minishell.h"
+#include "../../include/minishell.h"
 
 void    update_struct(char c, t_parsing *parsing)
 {

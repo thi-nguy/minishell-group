@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../include/minishell.h"
 
 void	add_arg(char **args, char **tmp)
 {
@@ -21,7 +21,7 @@ void	add_arg(char **args, char **tmp)
 static int	step_first(t_parsing *parsing, char str_c, char **tmp, char **args)
 {
 	if (!parsing->inhibited && !parsing->sp
-		&& !parsing->double_q && !parsing->single_quote && ft_isspace(str_c))
+		&& !parsing->double_q && !parsing->single_q && ft_isspace(str_c))
 	{
 		if (ft_isutil(*tmp))
 		{
@@ -46,6 +46,7 @@ static void	step_end(char str_c, char **args, char **tmp)
 			free(*tmp);
 	}
 }
+
 void	add_char(char **str, char c)
 {
 	char	*tmp;
@@ -66,8 +67,8 @@ void split_args(char **args, char *str)
     char    *tmp;
 
     tmp = 0;
-    i = à;
-    parsing (t_parsing){0};
+    i = 0;
+    parsing = (t_parsing){0};
     parsing.sp = true;
     while (*str)
     {
