@@ -6,6 +6,7 @@ int	main(int ac, char **av, char **ev)
 	t_command	command;
 	int	total_env_var;
 	char	*path;
+	char	**shell_var;
 
 	total_env_var = count_env_var(ev);
 	parse_env(&command, ev, total_env_var);
@@ -24,6 +25,12 @@ int	main(int ac, char **av, char **ev)
 		}
 		else if (ft_strcmp(line, "env") != 0)
 			print_env_var(&command);
+		else if (is_shell_var(line) == true)
+		{
+			shell_var = parse_shell_var(line);
+			printf("shell var name: %s\n", shell_var[0]);
+			printf("shell var value: %s\n", shell_var[1]);
+		}
 		else
 			printf("Ok\n");
 		free(line);

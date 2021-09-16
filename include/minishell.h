@@ -18,5 +18,8 @@ void    print_list(t_env *head);
 int     count_env_var(char **env);
 void	free_memory(t_env *env_list);
 void    print_env_var(t_command *cmd);
+char    **parse_shell_var(char *line);
+bool    is_shell_var(char *line);
+
 
 #endif

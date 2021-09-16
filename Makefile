@@ -16,6 +16,7 @@ SRC = 	./src/main.c\
 		./src/utils/parse_env_to_linked_list.c\
 		./src/utils/utils_outside_project.c\
 		./src/utils/free_memory.c\
+		./src/utils/is_shell_var.c\
 		# ./src/args/is_inhibited.c ./src/args/parse.c\
 		# ./src/args/replace_str.c ./src/args/split_args.c\
 		# ./src/args/sub_env.c ./src/args/update.c\
