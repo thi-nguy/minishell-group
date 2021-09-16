@@ -1,12 +1,65 @@
-#include "minishell.h"
+#include "../include/minishell.h"
 
-int	main(int ac, char **av, char **ev)
+static bool	is_comment(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '#')
+		return (true);
+	return (false);
+}
+
+static bool	run_sh(int ac, char **av)
+{
+	t_command		**redir;
+	char			*line;
+	int				fd;
+
+	if (ac > 2)
+		return (true);
+	else if (ac == 2 && is_suffix(av[1], ".sh"))
+	{
+		fd = open(av[1], O_RDWR);
+		if (fd == -1)
+			return (true);
+		while (get_next_line(fd, &line) > 0)
+		{
+			if (!is_comment(line))
+			{
+				redir = split_commands(line);
+				try_commands(redir);
+			}
+			free(line);
+		}
+		close(fd);
+		printf("\n\n");
+		return (true);
+	}
+	return (false);
+}
+
+static bool	ft_tester(int ac, char **av)
+{
+	t_command	**redir;
+
+	if (ac >= 3 && !ft_strncmp(av[1], "-c", 3))
+	{
+		redir = split_commands(av[2]);
+		try_commands(redir);
+		return (true);
+	}
+	return (false);
+}
+
+/*int	main(int ac, char **av, char **ev)
 {
     char	*line;
 	t_command	command;
 	int	total_env_var;
 	char	*path;
-	char	**shell_var;
 
 	total_env_var = count_env_var(ev);
 	parse_env(&command, ev, total_env_var);
@@ -26,12 +79,6 @@ int	main(int ac, char **av, char **ev)
 		}
 		else if (ft_strcmp(line, "env") != 0)
 			print_env_var(&command);
-		else if (is_shell_var(line) == true)
-		{
-			shell_var = parse_shell_var(line);
-			printf("shell var name: %s\n", shell_var[0]);
-			printf("shell var value: %s\n", shell_var[1]);
-		}
 		else
 			printf("Ok\n");
 		free(line);
@@ -39,4 +86,22 @@ int	main(int ac, char **av, char **ev)
 	}
 	free_memory(command.env_head);
 	return (0);
-}
+}*/
+ 
+ int main(int ac, char **av, char **ev)
+ {
+	 int i;
+
+	 i = -1;
+	 g_global.env = ft_calloc(sizeof(char *), count_array(ev) + 1);
+	 while (ev[++i])
+		g_global.env[i] = ft_strdup(ev[i]);
+	//signal
+	//signal
+	if (ft_tester(ac, av) || run_sh(ac, av))
+		return (0);
+	minishell();
+	return (0);
+ }
+
+
