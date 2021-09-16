@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "../../include/minishell.h"
 
 t_env	*add_to_empty(t_env *head, char *data)
 {

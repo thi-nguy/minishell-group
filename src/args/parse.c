@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include "minishell.h"
+#include "../../include/minishell.h"
 
 bool ft_valid(char *str)
 {
@@ -23,7 +23,7 @@ bool ft_valid(char *str)
         update_struct(*str, &parsing);
         str++;
     }
-    return (!parsing.double_q && !!parsing.single_q && !parsing.inhibited)
+    return (!parsing.double_q && !parsing.single_q && !parsing.inhibited);
 }
 
 int     count_args(char *str)
@@ -39,7 +39,7 @@ int     count_args(char *str)
         update_struct(*str, &parsing);
         if (!parsing.sp && !parsing.double_q && !parsing.single_q && ft_isspace(*str))
             parsing.sp = true;
-        if (pars.sp && !ft_isspace(*str))
+        if (parsing.sp && !ft_isspace(*str))
         {
             parsing.sp = false;
             i++;
@@ -49,11 +49,9 @@ int     count_args(char *str)
     return (1);
 }
 
-
-
-char **parsing(char *str)
+char    **parsing(char *str)
 {
-    char    *parsing;
+    char    **parsing;
     int     ac;
     int     i;
 
@@ -63,7 +61,7 @@ char **parsing(char *str)
         return (NULL);
     }
     ac = count_args(str);
-    parsing = ft_callc(sizeof(char *), ac + 1);
+    parsing = ft_calloc(sizeof(char *), ac + 1);
     split_args(parsing, str);
     i = -1;
     while (parsing[++i])
