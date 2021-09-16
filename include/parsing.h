@@ -13,9 +13,6 @@
 #ifndef PARSING_H
 # define  PARSING_H
 
-# include "minishell.h"
-# include <stdbool.h>
-
 //parsing
 
 char	**parsing(char *str);
@@ -45,7 +42,7 @@ void    free_command(t_command **command);
 bool 	ft_is_in_set(char c, const char *set);
 t_command  **split_command(char *str);
 
-//redirection 
+//redirection
 
 bool 	is_simple(t_command **command, int *j);
 void   	try_command(t_command **command);

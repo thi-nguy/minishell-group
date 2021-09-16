@@ -9,8 +9,8 @@
 # include <sys/types.h>
 
 # include "../libft/libft.h"
-# include "parsing.h"
 # include "struct.h"
+# include "parsing.h"
 # include "utils.h"
 
 # define CHEVRON_LL '<' * '<'

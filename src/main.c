@@ -16,6 +16,7 @@ int	main(int ac, char **av, char **ev)
 	{
 		// Todo: launch minishell
 		add_history(line);
+		//command = split_command(line);
 		if (ft_strcmp(line, "pwd") != 0)
 		{
 			path = print_working_directory(&command);
