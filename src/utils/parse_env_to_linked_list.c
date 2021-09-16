@@ -14,6 +14,8 @@ t_env	*add_to_empty(t_env *head, char *data)
 	return (head);
 }
 
+// ! Todo: Need >> insert_at_tail <<
+
 t_env	*insert_at_beginning(t_env *head, char *data)
 {
 	t_env	*tmp;

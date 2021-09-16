@@ -54,12 +54,13 @@ static bool	ft_tester(int ac, char **av)
 	return (false);
 }
 
-/*int	main(int ac, char **av, char **ev)
+int	main(int ac, char **av, char **ev)
 {
     char	*line;
 	t_command	command;
 	int	total_env_var;
 	char	*path;
+	char	**shell_var;
 
 	total_env_var = count_env_var(ev);
 	parse_env(&command, ev, total_env_var);
@@ -69,7 +70,6 @@ static bool	ft_tester(int ac, char **av)
 	{
 		// Todo: launch minishell
 		add_history(line);
-		//command = split_command(line);
 		if (ft_strcmp(line, "pwd") != 0)
 		{
 			path = print_working_directory(&command);
@@ -79,6 +79,8 @@ static bool	ft_tester(int ac, char **av)
 		}
 		else if (ft_strcmp(line, "env") != 0)
 			print_env_var(&command);
+		else if (is_shell_var(line) == true)
+			parse_shell_var(&command, line);
 		else
 			printf("Ok\n");
 		free(line);
@@ -86,22 +88,22 @@ static bool	ft_tester(int ac, char **av)
 	}
 	free_memory(command.env_head);
 	return (0);
-}*/
- 
- int main(int ac, char **av, char **ev)
- {
-	 int i;
+}
 
-	 i = -1;
-	 g_global.env = ft_calloc(sizeof(char *), count_array(ev) + 1);
-	 while (ev[++i])
-		g_global.env[i] = ft_strdup(ev[i]);
-	//signal
-	//signal
-	if (ft_tester(ac, av) || run_sh(ac, av))
-		return (0);
-	minishell();
-	return (0);
- }
+// int main(int ac, char **av, char **ev)
+// {
+//	 int i;
+
+//	 i = -1;
+//	 g_global.env = ft_calloc(sizeof(char *), count_array(ev) + 1);
+//	 while (ev[++i])
+//		g_global.env[i] = ft_strdup(ev[i]);
+//	//signal
+//	//signal
+//	if (ft_tester(ac, av) || run_sh(ac, av))
+//		return (0);
+//	//minishell();
+//	return (0);
+// }
 
 

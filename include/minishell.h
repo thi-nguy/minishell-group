@@ -26,8 +26,10 @@ void    print_list(t_env *head);
 int     count_env_var(char **env);
 void	free_memory(t_env *env_list);
 void    print_env_var(t_command *cmd);
-char    **parse_shell_var(char *line);
+void    parse_shell_var(t_command *command, char *line);
 bool    is_shell_var(char *line);
-
+bool    is_syntax_valid(char **table);
+t_shell_var     *add_to_empty_var_list(t_shell_var *head, char **shell_var);
+void        update_var(t_shell_var *head, char **shell_var);
 
 #endif
