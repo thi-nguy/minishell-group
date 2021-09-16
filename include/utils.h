@@ -36,4 +36,6 @@ bool	try_right(t_command **command, int *i);
 bool	red_right(t_command **command, int *i);
 void	red_left(t_command  **command, int *i);
 
+bool	is_suffix(char *str, char *suffix);
+char	**ft_get_paths(void);
 #endif

@@ -29,8 +29,8 @@ static bool	run_sh(int ac, char **av)
 		{
 			if (!is_comment(line))
 			{
-				redir = split_commands(line);
-				try_commands(redir);
+				redir = split_command(line);
+				try_command(redir);
 			}
 			free(line);
 		}
@@ -47,8 +47,8 @@ static bool	ft_tester(int ac, char **av)
 
 	if (ac >= 3 && !ft_strncmp(av[1], "-c", 3))
 	{
-		redir = split_commands(av[2]);
-		try_commands(redir);
+		redir = split_command(av[2]);
+		try_command(redir);
 		return (true);
 	}
 	return (false);
