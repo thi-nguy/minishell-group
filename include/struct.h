@@ -1,67 +1,32 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-typedef struct s_env
+typedef enum		e_token_type
 {
-	char			*data;
-	struct s_env	*prev;
-	struct s_env	*next;
-}	t_env;
+	left_redirection,
+	right_redirection,
+	double_left_redirection,
+	double_right_redirection,
+	pipe_symbol,
+	single_quote,
+	double_quote,
+	literal,
+	variable,
+	space,
+}					t_token_type;
 
-typedef struct s_shell_var
+typedef struct		s_token
 {
-    char                *var_name;
-    char                *value;
-    struct s_shell_var  *prev;
-    struct s_shell_var  *next;
-} t_shell_var;
+	void			*value; //pointer void quan trong
+	t_token_type	type; // khong duoc dung enum thi dung char* khong sao hoac int.
+}					t_token;
 
-typedef struct s_command
+typedef struct		s_info
 {
-    char    *command_name;
-    char    *command_option;
-    char    *command_argument;
-    t_env   *env_head;
-    t_env   *env_end;
-    int     end;
-	int     type;
-	char    *str;
-	char    **args;
-	int	    f_out;
-    t_shell_var *shell_var_head;
-    t_shell_var *shell_var_end;
+	t_list			*list_input;
+	int				return_value;
+}					t_info;
 
-} t_command;
-
-typedef struct s_global
-{
-    int     return_code;
-    char    **env;
-}               t_global;
-
-t_global	g_global;
-
-typedef struct s_parsing
-{
-	bool	inhibited;
-	bool	single_q;
-	bool	double_q;
-	bool	sp;
-	bool	is_inhiber;
-	bool	is_simple;
-	bool	is_double;
-}	t_parsing;
-
-typedef struct t_fd
-{
-	int		end;
-	int		f;
-	int		stdin_;
-	bool	first;
-	int		stdout_;
-	int		current_pipe[2];
-	int		f_out;
-
-}	t_fd;
+t_info				g_info;
 
 #endif

@@ -6,7 +6,7 @@
 #    By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/05 13:06:33 by thi-nguy          #+#    #+#              #
-#    Updated: 2019/12/09 13:14:24 by thi-nguy         ###   ########.fr        #
+#    Updated: 2021/09/26 22:03:28 by thi-nguy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ ft_strnstr.c ft_isascii.c ft_memmove.c ft_strdup.c ft_strrchr.c\
 ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c\
 ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c\
 get_next_line.c get_next_line_utils.c ft_strcmp.c ft_isspace.c\
-ft_count_words.c ft_alloc_words.c\
+ft_count_words.c ft_alloc_words.c ft_memdel.c\
 
 # BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c\
 		ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
