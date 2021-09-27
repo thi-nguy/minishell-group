@@ -14,23 +14,32 @@
 
 void	free_all_memory(void)
 {
+    t_list      *element;
+
     if (g_info.list_input)
     {
-        ft_lstclear(g_info.list_input, free_token);
+        while (g_info.list_input)
+        {
+            free_token(g_info.list_input->content);
+            element = g_info.list_input;
+            g_info.list_input = element->next;
+            free(element);
+            element = NULL;
+        }
+        g_info.list_input = NULL;
     }
 }
 
-void    free_token(void *content)
+void    free_token(t_token *content)
 {
 
     t_token *current_token;
 
     if (!content)
         return ;
-    current_token = (t_token *)content;
-    if (current_token && current_token->value)
+    current_token = content;
+    if (current_token->value != NULL)
         ft_memdel(&current_token->value);
     free(current_token);
     current_token = NULL;
-    content = NULL;
 }

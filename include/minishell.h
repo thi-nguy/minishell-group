@@ -15,7 +15,7 @@
 void        tokenizer(char *line);
 t_token     *create_token(char c, t_token_type type);
 void	    free_all_memory(void);
-void        free_token(void *token);
+void        free_token(t_token *content);
 
 
 // Functions outside of project.

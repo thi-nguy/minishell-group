@@ -54,7 +54,6 @@ void    tokenizer(char *line)
     while (line[i] != '\0')
     {
         token_type = get_token_type(line[i]);
-        //printf("token type for |%c| is |%d|\n", line[i], token_type);
         token = create_token(line[i], token_type);
         new = ft_lstnew(token);
         if (!new)
