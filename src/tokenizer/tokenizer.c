@@ -61,5 +61,5 @@ void    tokenizer(char *line)
         ft_lstadd_back(&g_info.list_input, new);
         i++;
     }
-    ft_lstiter(g_info.list_input, print_item);
+    //ft_lstiter(g_info.list_input, print_item);
 }

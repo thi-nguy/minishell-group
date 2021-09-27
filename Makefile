@@ -1,6 +1,6 @@
 LIBFT = -L./libft/
 
-LINK = -lft -lreadline 
+LINK = -lft -lreadline
 
 FLAGS = -fsanitize=address -Wall -Wextra -Werror
 
@@ -12,6 +12,7 @@ NAME = minishell
 
 SRC = 	./src/main.c\
 		./src/tokenizer/tokenizer.c\
+		./src/tokenizer/concat_same_type_token.c\
 		./src/utils/utils_outside_project.c\
 		./src/utils/utils.c\
 
