@@ -2,7 +2,7 @@
 
 void    concat_same_type_token(void)
 {
-    t_list      *current_list;
+    t_token_list      *current_list;
 
     current_list = g_info.list_input;
     while (current_list)
@@ -14,7 +14,7 @@ void    concat_same_type_token(void)
 
         // Todo 2: join same type tokens to one token (remember to handle double redirection >> <<)
         // ! remove the current node if join successfully.
-        join_same_type_token(current_list);
+        join_same_type_token(&current_list);
         // Todo 3:
 
         current_list = current_list->next;
@@ -22,27 +22,26 @@ void    concat_same_type_token(void)
 
 }
 
-t_token    *join_same_type_token(t_list *token_list)
+void    join_same_type_token(t_token_list **token_list)
 {
     t_token *prev_token;
     t_token *current_token;
     t_token *new_token;
     char    *new_value;
 
-    if (token_list->prev == NULL)
-        return NULL;
-    prev_token = token_list->prev->content;
-    current_token = token_list->content;
+    if ((*token_list)->prev == NULL)
+        return ;
+    prev_token = (*token_list)->prev->content;
+    current_token = (*token_list)->content;
     if (prev_token->type != current_token->type)
-        return (NULL);
+        return ;
     new_value = ft_strjoin(prev_token->value, current_token->value);
-    free(current_token->value);
-    current_token->value = new_value;
-    free(prev_token->value);
-    prev_token->value = NULL;
-    free(prev_token);
-    prev_token = NULL;
-    return (current_token);
+    //free((*token_list)->content->value);
+    (*token_list)->content->value = new_value;
+    free((*token_list)->prev->content);
+    (*token_list)->prev->content = NULL;
+    free((*token_list)->prev);
+    (*token_list)->prev = NULL;
 }
 
 //int     handle_quote(t_list *input_list, t_token_type quote_type)

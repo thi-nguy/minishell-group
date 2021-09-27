@@ -14,7 +14,7 @@
 
 void	free_all_memory(void)
 {
-    t_list      *element;
+    t_token_list      *element;
 
     if (g_info.list_input)
     {

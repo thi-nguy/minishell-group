@@ -42,11 +42,48 @@ t_token     *create_token(char c, t_token_type type)
     return (new_token);
 }
 
+t_token_list	*get_last_token(t_token_list *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
+}
+
+
+void	add_token_to_end_list(t_token_list **lst, t_token_list *new)
+{
+	t_token_list *near_last;
+
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	near_last = get_last_token(*lst);
+	near_last->next = new;
+	new->prev = near_last;
+}
+
+t_token_list	*make_new_token(void *content)
+{
+	t_token_list *new;
+
+	if (!(new = malloc(sizeof(*new))))
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	new->prev = NULL;
+	return (new);
+}
+
+
 
 void    tokenizer(char *line)
 {
     int i;
-    t_list				*new;
+    t_token_list				*new;
 	t_token				*token;
 	t_token_type		token_type;
 
@@ -55,10 +92,10 @@ void    tokenizer(char *line)
     {
         token_type = get_token_type(line[i]);
         token = create_token(line[i], token_type);
-        new = ft_lstnew(token);
+        new = make_new_token(token);
         if (!new)
             return ;
-        ft_lstadd_back(&g_info.list_input, new);
+        add_token_to_end_list(&g_info.list_input, new);
         i++;
     }
     //ft_lstiter(g_info.list_input, print_item);
