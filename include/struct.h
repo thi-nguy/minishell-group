@@ -13,25 +13,19 @@ typedef enum		e_token_type
 	literal, // le reste
 	variable, // $
 	space,
-}					t_token_type;
+}					e_type;
 
 typedef struct		s_token
 {
-	void			*value; //pointer void quan trong e
-	t_token_type	type; // khong duoc dung enum thi dung char* khong sao hoac int. literal
+	char			*value;
+	e_type			type;
+	struct s_token	*next;
+	struct s_token 	*prev;
 }					t_token;
-
-typedef struct		s_token_list
-{
-	t_token					*content;
-	struct s_token_list		*next;
-	struct s_token_list		*prev;
-}					t_token_list;
 
 typedef struct		s_info
 {
-	t_token_list			*list_input;
-	int						return_value;
+	int				return_value;
 }					t_info;
 
 t_info				g_info;

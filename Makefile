@@ -12,9 +12,9 @@ NAME = minishell
 
 SRC = 	./src/main.c\
 		./src/tokenizer/tokenizer.c\
-		./src/tokenizer/concat_same_type_token.c\
-		./src/utils/utils_outside_project.c\
-		./src/utils/utils.c\
+		#./src/utils/utils.c\
+		#./src/tokenizer/concat_same_type_token.c\
+		#./src/utils/utils_outside_project.c\
 
 OBJ = $(SRC:.c=.o)
 
