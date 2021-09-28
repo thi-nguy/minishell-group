@@ -35,7 +35,6 @@ t_token	*get_last_token(t_token *token_list)
 		current_token = current_token->next;
 	return (current_token);
 }
-
 void	add_token_to_end(t_token **lst, t_token *new_token)
 {
 	t_token     *near_last;
@@ -65,11 +64,13 @@ t_token     *create_token(char c, e_type type)
         return (NULL);
     new_token->value = value;
     new_token->type = type;
+    new_token->next = NULL;
+    new_token->prev = NULL;
     return (new_token);
 }
 
 
-void    tokenizer(char *line, t_token *token_list)
+void    tokenizer(char *line, t_token **token_list)
 {
     int i;
 	e_type		    token_type;
@@ -82,7 +83,7 @@ void    tokenizer(char *line, t_token *token_list)
         new_token = create_token(line[i], token_type);
         if (!new_token)
             return ;
-        add_token_to_end(&token_list, new_token);
+        add_token_to_end(token_list, new_token);
         i++;
     }
 }

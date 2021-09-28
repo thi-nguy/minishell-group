@@ -12,34 +12,25 @@
 
 #include "../../include/minishell.h"
 
-void	free_all_memory(void)
+void	free_all_memory(t_token **head_token)
 {
-    t_token_list      *element;
+    t_token      *current_token;
 
-    if (g_info.list_input)
+    current_token = *head_token;
+
+    if (*head_token != NULL)
     {
-        while (g_info.list_input)
+        while (current_token->next)
         {
-            free_token(g_info.list_input->content);
-            element = g_info.list_input;
-            g_info.list_input = element->next;
-            free(element);
-            element = NULL;
+            current_token = current_token->next;
+            free(current_token->prev->value);
+            current_token->prev->value = NULL;
+            free(current_token->prev);
+            current_token->prev = NULL;
         }
-        g_info.list_input = NULL;
+        free(current_token->value);
+        current_token->value = NULL;
+        free(current_token);
+        current_token = NULL;
     }
-}
-
-void    free_token(t_token *content)
-{
-
-    t_token *current_token;
-
-    if (!content)
-        return ;
-    current_token = content;
-    if (current_token->value != NULL)
-        ft_memdel(&current_token->value);
-    free(current_token);
-    current_token = NULL;
 }

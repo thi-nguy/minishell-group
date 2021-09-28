@@ -28,6 +28,4 @@ typedef struct		s_info
 	int				return_value;
 }					t_info;
 
-t_info				g_info;
-
 #endif
