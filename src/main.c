@@ -16,7 +16,11 @@ int	main(int ac, char **av, char **ev)
 	 	// TODO 2: tokenizer inputs, handle Ctr D
 	 	tokenizer(line, &head_token);
 	 	// TODO 3: Concatenate same type tokens
-		build_lexer(&head_token);
+		if (build_lexer(&head_token) == -1)
+		{
+			printf("Error\n");
+			return (0);
+		}
 		t_token		*current_token;
 		current_token = head_token;
 		while (current_token)
