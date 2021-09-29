@@ -20,7 +20,8 @@ t_token	    *get_last_token(t_token *token_list);
 
 void    	free_all_memory(t_token **head_token);
 
-void    build_lexer(t_token *token_list)
+void        build_lexer(t_token **token_list);
+void        join_same_type_token(t_token *current_token);
 
 // Functions outside of project.
 void    print_item(t_token *token);
