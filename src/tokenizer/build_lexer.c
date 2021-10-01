@@ -40,7 +40,7 @@ int     handle_quote(t_token *quote_token)
             remove_token_node(current_token);
             return (1);
         }
-        if (quote_token->type == double_quote)
+        if (quote_token->type == double_quote && current_token->type == variable)
             handle_variable(current_token);
         if (current_token->type != literal)
             current_token->type = literal;
@@ -53,6 +53,8 @@ int     handle_quote(t_token *quote_token)
 
 void    handle_variable(t_token *token)
 {
+    if (token->type != variable)
+        return ;
 
 }
 
