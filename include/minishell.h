@@ -22,6 +22,7 @@ void    	free_all_memory(t_token **head_token);
 
 int         build_lexer(t_token **token_list);
 void        join_same_type_token(t_token *current_token);
+void        remove_token_node(t_token *node);
 int         handle_quote(t_token *current_token);
 
 // Functions outside of project.

@@ -41,19 +41,24 @@ int	main(int ac, char **av, char **ev)
 //// * For debug
 //	t_token		*head_token;
 //	t_token		*current_token;
-//	char *line = "abc xyz";
+//	char *line = "echo '$USER'";
 //// char *line2 = "x|z";
 
 //	head_token = NULL;
 
 //	tokenizer(line, &head_token);
-//	build_lexer(&head_token);
+//	if (build_lexer(&head_token) == -1)
+//	{
+//		printf("Error\n");
+//		return (0);
+//	}
 //	current_token = head_token;
 //	while (current_token)
 //	{
 //		printf("Data node: |%s| - Type of data: |%d|\n", current_token->value, current_token->type);
 //		current_token = current_token->next;
 //	}
+
 //	free_all_memory(&head_token);
 //	// head_token = NULL;
 //	// tokenizer(line2, &head_token);

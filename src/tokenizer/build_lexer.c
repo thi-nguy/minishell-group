@@ -19,6 +19,7 @@ int    build_lexer(t_token **token_list)
         join_same_type_token(current_token);
         current_token = current_token->next;
     }
+    return (1);
 }
 
 /*
@@ -34,16 +35,43 @@ int     handle_quote(t_token *quote_token)
     while (current_token)
     {
         if (quote_token->type == current_token->type)
+        {
+            remove_token_node(quote_token);
+            remove_token_node(current_token);
             return (1);
+        }
         if (quote_token->type == double_quote)
             handle_variable(current_token);
         if (current_token->type != literal)
             current_token->type = literal;
+        join_same_type_token(current_token);
         current_token = current_token->next;
     }
     printf("Error: missing quotes\n");
     return (-1);
 }
+
+void    handle_variable(t_token *token)
+{
+
+}
+
+void       remove_token_node(t_token *node)
+{
+    t_token *prev_token;
+    t_token *next_token;
+
+    prev_token = node->prev;
+    next_token = node->next;
+    free(node->value);
+    node->value = NULL;
+    free(node);
+    node = NULL;
+    prev_token->next = next_token;
+    if (next_token != NULL)
+        next_token->prev = prev_token;
+}
+
 
 
 
@@ -63,12 +91,5 @@ void    join_same_type_token(t_token *current_token)
     new_value = ft_strjoin(prev_token->value, current_token->value);
     free(prev_token->value);
     prev_token->value = new_value;
-    free(current_token->value);
-    current_token->value = NULL;
-    free(current_token);
-    current_token = NULL;
-    prev_token->next = next_token;
-    if (next_token != NULL)
-        next_token->prev = prev_token;
+    remove_token_node(current_token);
 }
-
