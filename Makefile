@@ -2,7 +2,7 @@ LIBFT = -L./libft/
 
 LINK = -lft -lreadline
 
-FLAGS = -fsanitize=address -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsanitize=address 
 
 CC = gcc -g -I./include/
 
@@ -13,6 +13,7 @@ NAME = minishell
 SRC = 	./src/main.c\
 		./src/tokenizer/tokenizer.c\
 		./src/utils/utils.c\
+		./src/utils/get_env_list.c\
 		./src/tokenizer/build_lexer.c\
 		#./src/utils/utils_outside_project.c\
 

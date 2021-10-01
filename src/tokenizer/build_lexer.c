@@ -41,8 +41,12 @@ int     handle_quote(t_token *quote_token)
             return (1);
         }
         if (quote_token->type == double_quote && current_token->type == variable)
+        {
             handle_variable(current_token);
-        if (current_token->type != literal)
+            remove_token_node(current_token);
+            printf("Name of variable: %s\n", current_token->value);
+        }   
+        if (current_token->type != literal && current_token->type != variable)
             current_token->type = literal;
         join_same_type_token(current_token);
         current_token = current_token->next;
@@ -51,11 +55,42 @@ int     handle_quote(t_token *quote_token)
     return (-1);
 }
 
-void    handle_variable(t_token *token)
+void    get_variable_name(t_token *variable_token)
 {
-    if (token->type != variable)
-        return ;
+    t_token *current_token;
 
+    current_token = variable_token->next;
+    while (current_token)
+    {
+        if (current_token->type != literal)
+            return ;
+        join_same_type_token(current_token);
+        current_token = current_token->next;
+    }
+}
+
+int    is_environment_variable(char *name_variable)
+{
+    //duyet qua list environment variable va tim ten.
+    // Khong tim thay thi tra ve 0,
+    // tim thay thi tra ve 1
+
+
+}
+
+void    get_variable_value(t_token *token)
+{
+    if (is_environment_variable(token->value) == 0)
+        return ;
+    
+
+}
+
+void    handle_variable(t_token *variable_token)
+{
+    get_variable_name(variable_token);
+    get_variable_value(variable_token->next);
+    
 }
 
 void       remove_token_node(t_token *node)

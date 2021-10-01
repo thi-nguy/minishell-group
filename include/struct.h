@@ -23,9 +23,19 @@ typedef struct		s_token
 	struct s_token 	*prev;
 }					t_token;
 
+typedef struct 		s_env
+{
+	char			*name;
+	char			*value;
+	struct s_env 	*next;
+	struct s_env	*prev;
+}					t_env;
+
 typedef struct		s_info
 {
 	int				return_value;
 }					t_info;
+
+
 
 #endif

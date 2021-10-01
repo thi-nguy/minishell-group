@@ -35,6 +35,7 @@ t_token	*get_last_token(t_token *token_list)
 		current_token = current_token->next;
 	return (current_token);
 }
+
 void	add_token_to_end(t_token **lst, t_token *new_token)
 {
 	t_token     *near_last;
