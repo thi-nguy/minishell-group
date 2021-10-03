@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 18:48:22 by idamoutto         #+#    #+#             */
-/*   Updated: 2021/09/26 22:03:34 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/03 17:48:38 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ void	free_all_memory_env(t_env **head_token)
         free(current_token->name);
         current_token->name = NULL;
         free(current_token);
-        current_token = NULL;
+        *head_token = NULL;
     }
 }

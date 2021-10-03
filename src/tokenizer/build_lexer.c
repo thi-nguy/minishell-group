@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "../../include/minishell.h"
 /*
  Todo 1: if there is quote, handle quote till the next quote.
  Todo 1b: double handle redirection

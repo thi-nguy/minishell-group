@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "../../include/minishell.h"
 
 char    *print_working_directory(t_command *cmd)
 {

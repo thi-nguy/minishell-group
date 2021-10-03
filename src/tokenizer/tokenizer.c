@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "../../include/minishell.h"
 
 e_type        get_token_type(char c)
 {
