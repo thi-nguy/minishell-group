@@ -21,14 +21,16 @@ void	    add_token_to_end(t_token **lst, t_token *new_token);
 t_token	    *get_last_token(t_token *token_list);
 
 void    	free_all_memory(t_token **head_token);
-void	free_all_memory_env(t_env **head_token);
+void	    free_all_memory_env(t_env **head_token);
 
 int         build_lexer(t_token **token_list);
 void        join_same_type_token(t_token *current_token);
 void        remove_token_node(t_token *node);
 int         handle_quote(t_token *current_token);
 void        handle_variable(t_token *variable_token);
-void        get_variable_name(t_token *variable_token);
+char        *get_variable_name(t_token *variable_token);
+int         is_variable_valid(char *var_name);
+char        *get_variable_value(char *var_name);
 
 void        get_env_list(char **env);
 t_env       *create_env(char *var);

@@ -6,7 +6,7 @@ void    get_env_list(char **env)
     t_env   *new_env;
 
     i = 0;
-    while (i <= 1)
+    while (env[i] != NULL)
     {
         new_env = create_env(env[i]);
         if (!new_env)
@@ -28,10 +28,16 @@ t_env   *create_env(char *var)
     new_env = (t_env *)malloc(sizeof(t_env));
     if (!new_env)
         return (NULL);
-    new_env->name = split_result[0];
-    new_env->value = split_result[1];
+    new_env->name = ft_strdup(split_result[0]);
+    new_env->value = ft_strdup(split_result[1]);
     new_env->next = NULL;
     new_env->prev = NULL;
+    free(split_result[0]);
+    split_result[0] = NULL;
+    free(split_result[1]);
+    split_result[1] = NULL;
+    free(split_result);
+    split_result = NULL;
     return (new_env);
 }
 
