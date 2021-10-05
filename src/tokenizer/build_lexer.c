@@ -18,7 +18,7 @@ int    build_lexer(t_token **token_list)
                 return (-1);
         if (current_token->type == variable)
         {
-            handle_variable(current_token);
+            handle_variable(current_token, 0);
             remove_token_node(current_token);
         }
         join_same_type_token(current_token);
@@ -47,7 +47,7 @@ int     handle_quote(t_token *quote_token)
         }
         if (quote_token->type == double_quote && current_token->type == variable)
         {
-            handle_variable(current_token);
+            handle_variable(current_token, 1);
             remove_token_node(current_token);
         }
         if (quote_token->type == single_quote && current_token->type != literal) // change token type to literal because still inside quote.

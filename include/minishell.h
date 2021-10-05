@@ -27,10 +27,16 @@ int         build_lexer(t_token **token_list);
 void        join_same_type_token(t_token *current_token);
 void        remove_token_node(t_token *node);
 int         handle_quote(t_token *current_token);
-void        handle_variable(t_token *variable_token);
+void        handle_variable_inside_quote(t_token *variable_token);
+void        handle_variable(t_token *variable_token, int with_quote);
 char        *get_variable_name(t_token *variable_token);
 int         is_variable_valid(char *var_name);
-char        *get_variable_value(char *var_name);
+char        *get_variable_value(char *var_name, int with_quote);
+char        *trim_space(char *str);
+char        *get_trimmed_string(char **split_result, int len);
+int         get_total_len(char **split_result);
+void        free_tab(char **str);
+
 
 void        get_env_list(char **env);
 t_env       *create_env(char *var);
