@@ -58,11 +58,13 @@ int	main(int ac, char **av, char **ev)
 //// * For debug
  	//t_token		*head_token;
  	//t_token		*current_token;
- 	//char *line = "echo $?";
+ 	//char *line = "echo \"hehe  $?\"";
+	//int		exit_code;
 
+	//exit_code = 0;
  	//get_env_list(ev);
+	//add_exit_code_to_env_list(exit_code);
 	//head_token = NULL;
-
  	//tokenizer(line, &head_token);
  	//if (build_lexer(&head_token) == -1)
  	//{
