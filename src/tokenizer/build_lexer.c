@@ -16,6 +16,11 @@ int    build_lexer(t_token **token_list)
         if (current_token->type == single_quote || current_token->type == double_quote)
             if (handle_quote(current_token) == -1)
                 return (-1);
+        if (current_token->type == variable)
+        {
+            handle_variable(current_token);
+            remove_token_node(current_token);
+        }
         join_same_type_token(current_token);
         current_token = current_token->next;
     }

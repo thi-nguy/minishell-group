@@ -58,9 +58,10 @@ void    handle_variable(t_token *variable_token)
 
     env_var_name = get_variable_name(variable_token);
     if (is_variable_valid(env_var_name) == 0)
-        return ;
-    env_var_value = get_variable_value(env_var_name);
+        env_var_value = "";
+    else
+        env_var_value = get_variable_value(env_var_name);
     free(variable_token->next->value);
     variable_token->next->value = ft_strdup(env_var_value);
-    printf("variable name: |%s|\n", variable_token->next->value);
+    //printf("variable name: |%s|\n", variable_token->next->value);
 }
