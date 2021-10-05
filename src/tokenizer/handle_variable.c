@@ -10,12 +10,12 @@ char    *get_variable_name(t_token *variable_token)
     {
         if (current_token->type != literal)
         {
-            return (current_token->prev->value);
+            return (variable_token->next->value);
         }
         join_same_type_token(current_token);
         current_token = current_token->next;
     }
-    return (current_token->prev->value);
+    return (variable_token->next->value);
 }
 
 int    is_variable_valid(char *var_name)
