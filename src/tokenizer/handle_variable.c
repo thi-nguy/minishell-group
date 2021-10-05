@@ -37,7 +37,6 @@ char    *get_variable_value(char *var_name, int with_quote)
                 result = trim_space(current_env->value);
                 return (result);
             }
-
         }
         current_env = current_env->next;
     }
@@ -145,14 +144,37 @@ void    handle_variable(t_token *variable_token, int with_quote)
     char    *env_var_value;
 
     env_var_name = get_variable_name(variable_token);
-    if (ft_strcmp(env_var_value, "?") == 1)
-        env_var_value = "$?";
-    else if (is_variable_valid(env_var_name) == 0)
-        env_var_value = "";
-    else
-        env_var_value = get_variable_value(env_var_name, with_quote);
+    //if (ft_strcmp(env_var_value, "?") == 1)
+    //    env_var_value = get_exit_code(with_quote);
+    //else if (is_variable_valid(env_var_name) == 0)
+    //    env_var_value = "";
+    //else
+    //    env_var_value = get_variable_value(env_var_name, with_quote);
     free(variable_token->next->value);
     variable_token->next->value = ft_strdup(env_var_value);
     //printf("variable name: |%s|\n", variable_token->next->value);
 }
 
+
+//char    *get_exit_code(char *var_name, int with_quote)
+//{
+//    t_env   *current_env;
+//    char    *result;
+
+//    current_env = g_head_env;
+//    while (current_env)
+//    {
+//        if (ft_strcmp(var_name, current_env->name) == 1)
+//        {
+//            if (with_quote == 1)
+//                return (current_env->value);
+//            else
+//            {
+//                result = trim_space(current_env->value);
+//                return (result);
+//            }
+//        }
+//        current_env = current_env->next;
+//    }
+//    return (NULL);
+//}
