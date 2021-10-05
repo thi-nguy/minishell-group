@@ -13,6 +13,7 @@ typedef enum		e_token_type
 	literal, // le reste
 	variable, // $
 	space,
+	question_mark  //?
 }					e_type;
 
 typedef struct		s_token

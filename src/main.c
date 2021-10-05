@@ -10,13 +10,13 @@ int	main(int ac, char **av, char **ev)
 	head_token = NULL;
 	line = NULL;
 	line = readline("minishell > ");
-	// TODO 1: handle signal: Ctr C, Ctr "\"
+	 TODO 1: handle signal: Ctr C, Ctr "\"
 	while (1)
 	{
 	 	add_history(line);
-	 	// TODO 2: tokenizer inputs, handle Ctr D
+	 	 TODO 2: tokenizer inputs, handle Ctr D
 	 	tokenizer(line, &head_token);
-	 	// TODO 3: Concatenate same type tokens
+	 	 TODO 3: Concatenate same type tokens
 	 	if (build_lexer(&head_token) == -1)
 	 	{
 	 		printf("Error\n");
@@ -29,10 +29,10 @@ int	main(int ac, char **av, char **ev)
 	 		printf("Data node: |%s| \t Type of data: |%d|\n", current_token->value, current_token->type);
 	 		current_token = current_token->next;
 	 	}
-	 	// TODO 4: Check validity of command line
-	 	// parse();
-	 	// TODO 5: execute commands
-	 	// execute_commands();
+	 	 TODO 4: Check validity of command line
+	 	 parse();
+	 	 TODO 5: execute commands
+	 	 execute_commands();
 
 	 	free_all_memory(&head_token);
 	 	head_token = NULL;
@@ -42,7 +42,7 @@ int	main(int ac, char **av, char **ev)
 //// * For debug
  	//t_token		*head_token;
  	//t_token		*current_token;
- 	//char *line = "echo '$abc'";
+ 	//char *line = "echo $?";
 
  	//get_env_list(ev);
 	//head_token = NULL;
@@ -60,6 +60,8 @@ int	main(int ac, char **av, char **ev)
 	//	current_token = current_token->next;
 	//}
 	//free_all_memory(&head_token);
+
+	// *for debug free memory
  	// head_token = NULL;
  	// tokenizer(line2, &head_token);
  	// current_token = head_token;

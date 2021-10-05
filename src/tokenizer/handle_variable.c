@@ -1,22 +1,7 @@
 #include "minishell.h"
 
 
-char    *get_variable_name(t_token *variable_token)
-{
-    t_token *current_token;
 
-    current_token = variable_token->next;
-    while (current_token)
-    {
-        if (current_token->type != literal)
-        {
-            return (variable_token->next->value);
-        }
-        join_same_type_token(current_token);
-        current_token = current_token->next;
-    }
-    return (variable_token->next->value);
-}
 
 int    is_variable_valid(char *var_name)
 {
@@ -137,13 +122,32 @@ void    free_tab(char **str)
     *str = NULL;
 }
 
+char    *get_variable_name(t_token *variable_token)
+{
+    t_token *current_token;
+
+    current_token = variable_token->next;
+    while (current_token)
+    {
+        if (current_token->type != literal)
+        {
+            return (variable_token->next->value);
+        }
+        join_same_type_token(current_token);
+        current_token = current_token->next;
+    }
+    return (variable_token->next->value);
+}
+
 void    handle_variable(t_token *variable_token, int with_quote)
 {
     char    *env_var_name;
     char    *env_var_value;
 
     env_var_name = get_variable_name(variable_token);
-    if (is_variable_valid(env_var_name) == 0)
+    if (ft_strcmp(env_var_value, "?") == 1)
+        env_var_value = "$?";
+    else if (is_variable_valid(env_var_name) == 0)
         env_var_value = "";
     else
         env_var_value = get_variable_value(env_var_name, with_quote);
