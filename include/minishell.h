@@ -8,6 +8,7 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <errno.h>
 
 # include "../libft/libft.h"
 # include "struct.h"
@@ -39,5 +40,16 @@ t_env       *get_last_env(void);
 
 // Functions outside of project.
 void    print_item(t_token *token);
+
+
+//command
+int	my_pwd(void);
+int	my_exit(char **tmp);
+int	my_echo(char **line);
+int	my_env(t_list *env);
+int	my_unset(char **var, t_list *env);
+
+//utils
+void	exec_builtin(char *name, char **args, t_list *envlist);
 
 #endif
