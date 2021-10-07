@@ -3,9 +3,9 @@
 e_type        get_token_type(char c)
 {
     if (c == '>')
-        return (right_redirection);
+        return (redirect_output);
     else if (c == '<')
-        return (left_redirection);
+        return (redirect_input);
     // else if (c == '>>')
     //     return (double_left_redirection);
     // else if (c == '<<')

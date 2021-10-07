@@ -3,10 +3,10 @@
 
 typedef enum		e_token_type
 {
-	left_redirection, // <
-	right_redirection, // >
-	double_left_redirection,
-	double_right_redirection,
+	redirect_input, // <
+	redirect_output, // >
+	double_redirect_input, // <<
+	double_redirect_output, // >>
 	pipe_symbol, // |
 	single_quote, // '
 	double_quote, // ""
@@ -31,10 +31,14 @@ typedef struct 		s_env
 	struct s_env	*prev;
 }					t_env;
 
-typedef struct		s_info
+typedef struct		s_command
 {
-	int				return_value;
-}					t_info;
+	t_token				*command_line;
+	char				*command; // echo, env, export, cd, pwd, unset
+	char				**argument_array; // {"-n", "hello how are you", "lala"}
+	char				*file_path; // file.txt
+	e_type				redirect_type; // redirect_input (<)
+}					t_command;
 
 
 
