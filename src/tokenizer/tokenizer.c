@@ -20,8 +20,6 @@ e_type        get_token_type(char c)
         return (space);
     else if (c == '$')
         return (variable);
-    else if (c == '?')
-        return (question_mark);
     else
         return (literal);
 }

@@ -43,6 +43,7 @@ t_env       *create_env(char *var);
 void	    add_env_to_end(t_env *new_env);
 t_env       *get_last_env(void);
 void	    add_exit_code_to_env_list(int exit_code);
+void	    update_exit_code(int exit_code);
 
 // Functions outside of project.
 void    print_item(t_token *token);
