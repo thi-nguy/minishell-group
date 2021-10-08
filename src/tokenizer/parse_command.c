@@ -21,7 +21,53 @@ int     parse_command(t_token **head_token, t_command **head_command)
     if (get_redirection_status(*head_command) == 0)
         return (1);
     get_file_path(*head_command);
+    get_command(*head_command);
+    get_argument_array(*head_command);
     return (0);
+}
+
+void    get_argument_array(t_command *head_command)
+{
+    int i;
+    int j;
+    t_token *current_token;
+
+    i = 0;
+    while (head_command[i].command_line != NULL)
+    {
+        current_token = head_command[i].command_line;
+        while (current_token)
+        {
+            if (current_token->type == literal)
+                current_token = current_token->next;
+            remove_token_node(current_token);
+        }
+        i++;
+    }
+}
+
+void    get_command(t_command *head_command)
+{
+    int i;
+    t_token *current_token;
+    char    *command;
+
+    i = 0;
+    while (head_command[i].command_line != NULL)
+    {
+        current_token = head_command[i].command_line;
+        while (current_token && current_token->type != literal)
+            current_token = current_token->next;
+        if (current_token != NULL)
+        {
+            command = ft_strdup(current_token->value);
+            head_command[i].command = command;
+            remove_token_node(current_token);
+        }
+        else
+            head_command[i].command = NULL;
+        i++;
+    }
 }
 
 void    get_file_path(t_command *head_command)
@@ -41,7 +87,10 @@ void    get_file_path(t_command *head_command)
         while (current_token && current_token->type != literal)
             current_token = current_token->next;
         if (current_token != NULL)
+        {
             head_command[i].file_path = ft_strdup(current_token->value);
+            remove_token_node(current_token);
+        }
         else
             head_command[i].file_path = NULL;
         i++;

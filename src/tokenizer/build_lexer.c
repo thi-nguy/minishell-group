@@ -72,9 +72,40 @@ void       remove_token_node(t_token *node)
     node->value = NULL;
     free(node);
     node = NULL;
-    prev_token->next = next_token;
+    if (prev_token != NULL)
+        prev_token->next = next_token;
     if (next_token != NULL)
         next_token->prev = prev_token;
+}
+
+void remove_token_node_2(t_token *node, t_token **head)
+{
+    t_token *temp;
+    t_token *current;
+    t_token *previous;
+
+    if (ft_strcmp(node->value, (*head)->value) == 1)
+    {
+        temp = *head;
+        *head = (*head)->next;
+        free(temp);
+        return;
+    }
+    current = (*head)->next;
+    previous = *head;
+    while (current != NULL && previous != NULL) 
+    {
+        if (ft_strcmp(node->value, current->value) == 1)
+        {
+            temp = current;
+            previous->next = current->next;
+            free(temp);
+            return;
+        }
+        previous = current;
+        current = current->next;
+    }
+    return ;
 }
 
 

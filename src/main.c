@@ -77,7 +77,7 @@ int	main(int ac, char **av, char **ev)
  	t_token		*head_token;
  	t_token		*current_token;
 	t_command	*head_command;
- 	char *line = "echo hehe| pwd >> xyz";
+ 	char *line = " echo hehe >> abc| pwd >> xyz";
 	int		exit_code;
 
 	exit_code = 0;
@@ -95,14 +95,16 @@ int	main(int ac, char **av, char **ev)
 	int i = 0;
 	while (head_command[i].command_line != NULL)
 	{
-		printf("\nCommand line: %d\n", i);
+		printf("\nCommand number: %d\n", i);
 		printf("Type de direction: %d\n", head_command[i].redirect_type);
 		printf("File path: %s\n", head_command[i].file_path);
+		printf("command: %s\n", head_command[i].command);
+		printf("Command argument: \n");
 		print_item(&head_command[i].command_line);
 		i++;
 	}
 
-	free_all_memory(&head_token);
+	//free_all_memory(&head_token);
 
 	// *for debug free memory
  	// head_token = NULL;

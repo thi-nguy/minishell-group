@@ -34,12 +34,12 @@ typedef struct 		s_env
 
 typedef struct		s_command
 {
-	t_token				*command_line;
+	t_token				*command_line; // {"-n", "hello how are you", "lala"}
 	char				*command; // echo, env, export, cd, pwd, unset
-	char				**argument_array; // {"-n", "hello how are you", "lala"}
 	char				*file_path; // file.txt
 	e_type				redirect_type; // redirect_input (<)
 }					t_command;
+
 
 
 

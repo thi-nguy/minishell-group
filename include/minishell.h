@@ -26,6 +26,8 @@ void	    free_all_memory_env(t_env **head_token);
 int         build_lexer(t_token **token_list);
 void        join_same_type_token(t_token *current_token);
 void        remove_token_node(t_token *node);
+void        remove_token_node_2(t_token *node, t_token **head);
+
 int         handle_quote(t_token *current_token);
 void        handle_variable_inside_quote(t_token *variable_token);
 void        handle_variable(t_token *variable_token, int with_quote);
@@ -52,6 +54,8 @@ int         parse_command(t_token **head_token, t_command **head_command);
 int         is_enough_command(t_command *head_command, int num_pipe);
 int         get_redirection_status(t_command *head_command);
 void        get_file_path(t_command *head_command);
+void        get_command(t_command *head_command);
+void        get_argument_array(t_command *head_command);
 
 // Functions outside of project.
 void    print_item(t_token **token);
