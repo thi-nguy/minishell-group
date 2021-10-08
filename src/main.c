@@ -77,7 +77,7 @@ int	main(int ac, char **av, char **ev)
  	t_token		*head_token;
  	t_token		*current_token;
 	t_command	*head_command;
- 	char *line = "echo hehe >> abc| pwd >>> xyz";
+ 	char *line = "echo hehe| pwd >> xyz";
 	int		exit_code;
 
 	exit_code = 0;
@@ -92,19 +92,16 @@ int	main(int ac, char **av, char **ev)
  	}
 	// print_item(&head_token);
 	exit_code = parse_command(&head_token, &head_command);
-	if (exit_code == 1)
-		printf("Not enough command\n");
-	else
+	int i = 0;
+	while (head_command[i].command_line != NULL)
 	{
-		int i = 0;
-		while (head_command[i].command_line != NULL)
-		{
-			printf("\nCommand line: %d\n", i);
-			print_item(&head_command[i].command_line);
-			i++;
-		}
-
+		printf("\nCommand line: %d\n", i);
+		printf("Type de direction: %d\n", head_command[i].redirect_type);
+		printf("File path: %s\n", head_command[i].file_path);
+		print_item(&head_command[i].command_line);
+		i++;
 	}
+
 	free_all_memory(&head_token);
 
 	// *for debug free memory

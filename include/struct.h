@@ -12,7 +12,8 @@ typedef enum		e_token_type
 	double_quote, // ""
 	literal, // le reste
 	variable, // $
-	space
+	space,
+	no_redirect
 }					e_type;
 
 typedef struct		s_token

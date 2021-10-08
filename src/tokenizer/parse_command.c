@@ -18,9 +18,79 @@ int     parse_command(t_token **head_token, t_command **head_command)
     (*head_command)[i].command_line = NULL;
     if (is_enough_command(*head_command, num_pipe) == 0)
         return (1);
-    
+    if (get_redirection_status(*head_command) == 0)
+        return (1);
+    get_file_path(*head_command);
     return (0);
 }
+
+void    get_file_path(t_command *head_command)
+{
+    int i;
+    t_token *current_token;
+    e_type    redirect_type;
+
+    i = 0;
+    
+    while (head_command[i].command_line != NULL)
+    {
+        redirect_type = head_command[i].redirect_type;
+        current_token = head_command[i].command_line;
+        while (current_token && current_token->type != redirect_type)
+            current_token = current_token->next;
+        while (current_token && current_token->type != literal)
+            current_token = current_token->next;
+        if (current_token != NULL)
+            head_command[i].file_path = ft_strdup(current_token->value);
+        else
+            head_command[i].file_path = NULL;
+        i++;
+    }
+}
+
+int     get_redirection_status(t_command *head_command)
+{
+    int i;
+    int len;
+    t_token *current_token;
+    
+    
+    i = 0;
+    while (head_command[i].command_line != NULL)
+    {
+        current_token = head_command[i].command_line;
+        head_command[i].redirect_type = no_redirect;
+        while(current_token->next != NULL)
+        {
+            if (current_token->type == redirect_input)
+            {
+                len = ft_strlen(current_token->value);
+                if (len == 2)
+                {
+                    current_token->type = double_redirect_input;
+                    head_command[i].redirect_type = double_redirect_input;
+                }
+                else if (len > 2)
+                    return (0);
+            }
+            else if (current_token->type == redirect_output)
+            {
+                len = ft_strlen(current_token->value);
+                if (len == 2)
+                {                    
+                    current_token->type = double_redirect_output;
+                    head_command[i].redirect_type = double_redirect_output;
+                }
+                else if (len > 2)
+                    return (0);
+            }
+            current_token = current_token->next;
+        }
+        i++;
+    }
+    return (1);
+}
+
 
 int     is_enough_command(t_command *head_command, int num_pipe)
 {
