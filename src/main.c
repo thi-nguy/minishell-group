@@ -77,7 +77,7 @@ int	main(int ac, char **av, char **ev)
  	t_token		*head_token;
  	t_token		*current_token;
 	t_command	*head_command;
- 	char *line = "echo hehe  $? | pwd | cd ..";
+ 	char *line = "echo hehe >> abc| pwd >>> xyz";
 	int		exit_code;
 
 	exit_code = 0;
@@ -90,14 +90,20 @@ int	main(int ac, char **av, char **ev)
  		printf("Error\n");
  		return (0);
  	}
-	//print_item(&head_token);
+	// print_item(&head_token);
 	exit_code = parse_command(&head_token, &head_command);
-	int i = 0;
-	while (head_command[i].command_line)
+	if (exit_code == 1)
+		printf("Not enough command\n");
+	else
 	{
-		printf("\nCommand line: %d\n", i);
-		print_item(&head_command[i].command_line);
-		i++;
+		int i = 0;
+		while (head_command[i].command_line != NULL)
+		{
+			printf("\nCommand line: %d\n", i);
+			print_item(&head_command[i].command_line);
+			i++;
+		}
+
 	}
 	free_all_memory(&head_token);
 

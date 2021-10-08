@@ -32,12 +32,13 @@ t_env   *create_env(char *var)
     new_env->value = ft_strdup(split_result[1]);
     new_env->next = NULL;
     new_env->prev = NULL;
-    free(split_result[0]);
-    split_result[0] = NULL;
-    free(split_result[1]);
-    split_result[1] = NULL;
-    free(split_result);
-    split_result = NULL;
+    free_tab(split_result);
+    // free(split_result[0]);
+    // split_result[0] = NULL;
+    // free(split_result[1]);
+    // split_result[1] = NULL;
+    // free(split_result);
+    // split_result = NULL;
     return (new_env);
 }
 

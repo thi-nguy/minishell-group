@@ -49,7 +49,7 @@ void	    update_exit_code(int exit_code);
 int         get_number_of_pipe(t_token *head_token);
 t_token     *duplicate_token(t_token **head_token, int pipe_order);
 int         parse_command(t_token **head_token, t_command **head_command);
-
+int         is_enough_command(t_command *head_command, int num_pipe);
 
 // Functions outside of project.
 void    print_item(t_token **token);
