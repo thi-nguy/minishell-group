@@ -40,7 +40,8 @@ void    get_argument_array(t_command *head_command)
         {
             if (current_token->type == literal)
                 current_token = current_token->next;
-            remove_token_node(current_token);
+            else
+                delete_node(&head_command[i].command_line, current_token);
         }
         i++;
     }
@@ -60,9 +61,8 @@ void    get_command(t_command *head_command)
             current_token = current_token->next;
         if (current_token != NULL)
         {
-            command = ft_strdup(current_token->value);
-            head_command[i].command = command;
-            remove_token_node(current_token);
+            head_command[i].command = ft_strdup(current_token->value);
+            delete_node(&head_command[i].command_line, current_token);
         }
         else
             head_command[i].command = NULL;
@@ -89,7 +89,7 @@ void    get_file_path(t_command *head_command)
         if (current_token != NULL)
         {
             head_command[i].file_path = ft_strdup(current_token->value);
-            remove_token_node(current_token);
+            delete_node(&head_command[i].command_line, current_token);
         }
         else
             head_command[i].file_path = NULL;

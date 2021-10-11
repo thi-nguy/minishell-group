@@ -57,6 +57,8 @@ void        get_file_path(t_command *head_command);
 void        get_command(t_command *head_command);
 void        get_argument_array(t_command *head_command);
 
+void        delete_node(t_token **head_ref, t_token *node);
+
 // Functions outside of project.
 void    print_item(t_token **token);
 

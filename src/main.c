@@ -77,7 +77,7 @@ int	main(int ac, char **av, char **ev)
  	t_token		*head_token;
  	t_token		*current_token;
 	t_command	*head_command;
- 	char *line = " echo hehe >> abc| pwd >> xyz";
+ 	char *line = "echo hehe >> abc|pwd >> xyz ";
 	int		exit_code;
 
 	exit_code = 0;
