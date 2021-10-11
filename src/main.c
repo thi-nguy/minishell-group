@@ -92,8 +92,9 @@ int	main(int ac, char **av, char **ev)
  	}
 	// print_item(&head_token);
 	exit_code = parse_command(&head_token, &head_command);
+	int num_pipe = get_number_of_pipe(head_token);
 	int i = 0;
-	while (head_command[i].command_line != NULL)
+	while (i <= num_pipe)
 	{
 		printf("\nCommand number: %d\n", i);
 		printf("Type de direction: %d\n", head_command[i].redirect_type);

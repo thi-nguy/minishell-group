@@ -88,8 +88,9 @@ void delete_node(t_token **head_ref, t_token *node)
     // If head needs to be removed
     if (ft_strcmp(temp->value, node->value) == 1)
     {
-        *head_ref = temp->next;   // Change head
-        (*head_ref)->prev = temp;               // free old head
+        *head_ref = temp->next;
+        if (*head_ref != NULL)   // Change head
+            (*head_ref)->prev = temp;               // free old head
         free(temp);
         temp = NULL;
         return;
@@ -98,7 +99,7 @@ void delete_node(t_token **head_ref, t_token *node)
     while (ft_strcmp(temp->value, node->value) != 1)
          temp = temp->next;
     // If position is more than number of nodes
-    if (temp == NULL || temp->next == NULL)
+    if (temp == NULL)
          return;
    remove_token_node(node);
 }

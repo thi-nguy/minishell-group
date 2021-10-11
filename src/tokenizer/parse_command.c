@@ -31,6 +31,7 @@ void    get_argument_array(t_command *head_command)
     int i;
     int j;
     t_token *current_token;
+    t_token *tmp;
 
     i = 0;
     while (head_command[i].command_line != NULL)
@@ -38,10 +39,10 @@ void    get_argument_array(t_command *head_command)
         current_token = head_command[i].command_line;
         while (current_token)
         {
-            if (current_token->type == literal)
-                current_token = current_token->next;
-            else
-                delete_node(&head_command[i].command_line, current_token);
+            tmp = current_token;
+            current_token = current_token->next;
+            if (tmp->type != literal)
+                delete_node(&head_command[i].command_line, tmp);
         }
         i++;
     }
