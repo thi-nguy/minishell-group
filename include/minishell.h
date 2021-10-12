@@ -9,6 +9,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <signal.h>
+# include <errno.h>
 
 # include "../libft/libft.h"
 # include "struct.h"
@@ -63,5 +64,16 @@ void        delete_node(t_token **head_ref, t_token *node);
 void	    handle_signale_ctrl_c(int sig);
 // Functions outside of project.
 void    print_item(t_token **token);
+
+
+//command
+int	my_pwd(void);
+int	my_exit(char **tmp);
+int	my_echo(char **line);
+int	my_env(t_list *env);
+int	my_unset(char **var, t_list *env);
+
+//utils
+void	exec_builtin(char *name, char **args, t_list *envlist);
 
 #endif
