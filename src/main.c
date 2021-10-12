@@ -31,6 +31,13 @@ void	update_exit_code(int exit_code)
 }
 
 
+void	handle_signale_ctrl_c(int sig)
+{
+	// Todo: free memory?
+	printf("\nminishell > ");
+	(void)sig;
+}
+
 int	main(int ac, char **av, char **ev)
 {
 	char	*line;
@@ -47,6 +54,15 @@ int	main(int ac, char **av, char **ev)
 	//TODO 1: handle signal: Ctr C, Ctr "\"
 	while (1)
 	{
+		// * for debug Ctr C D /
+		// printf("line is: |%s|\n", line);
+		// signal(SIGINT, &handle_signale_ctrl_c);
+		// line = readline("minishell > ");
+
+		signal(SIGINT, &handle_signale_ctrl_c);
+		if (line == NULL)
+			return (0);
+		//signal(SIGQUIT, SIG_IGN);
 		update_exit_code(exit_code);
 		add_history(line);
 		// TODO 2: tokenizer inputs, handle Ctr D

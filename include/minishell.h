@@ -1,13 +1,14 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-#include <stdio.h>
-#include <readline/readline.h>
-#include <readline/history.h>
-#include <stdbool.h>
+# include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <stdbool.h>
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <signal.h>
 
 # include "../libft/libft.h"
 # include "struct.h"
@@ -59,7 +60,7 @@ void        get_command(t_command *head_command);
 void        get_argument_array(t_command *head_command);
 
 void        delete_node(t_token **head_ref, t_token *node);
-
+void	    handle_signale_ctrl_c(int sig);
 // Functions outside of project.
 void    print_item(t_token **token);
 
