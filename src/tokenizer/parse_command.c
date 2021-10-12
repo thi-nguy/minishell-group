@@ -18,12 +18,25 @@ int     parse_command(t_token **head_token, t_command **head_command)
     (*head_command)[i].command_line = NULL;
     if (is_enough_command(*head_command, num_pipe) == 0)
         return (1);
+    init_redirection(*head_command, num_pipe);
     if (get_redirection_status(*head_command) == 0)
         return (1);
     get_file_path(*head_command);
     get_command(*head_command);
     get_argument_array(*head_command);
     return (0);
+}
+
+void    init_redirection(t_command *head_command, int num_pipe)
+{
+    int i;
+    
+    i = 0;
+    while (i <= num_pipe)
+    {
+        head_command[i].redirect_type = no_redirect;
+        i++;
+    }
 }
 
 void    get_argument_array(t_command *head_command)
@@ -40,9 +53,9 @@ void    get_argument_array(t_command *head_command)
         while (current_token)
         {
             tmp = current_token;
-            current_token = current_token->next;
-            if (tmp->type != literal)
+            if (tmp->type != literal && tmp->value)
                 delete_node(&head_command[i].command_line, tmp);
+            current_token = current_token->next;
         }
         i++;
     }
@@ -109,7 +122,6 @@ int     get_redirection_status(t_command *head_command)
     while (head_command[i].command_line != NULL)
     {
         current_token = head_command[i].command_line;
-        head_command[i].redirect_type = no_redirect;
         while(current_token->next != NULL)
         {
             if (current_token->type == redirect_input)
@@ -122,6 +134,8 @@ int     get_redirection_status(t_command *head_command)
                 }
                 else if (len > 2)
                     return (0);
+                else
+                    head_command[i].redirect_type = current_token->type;
             }
             else if (current_token->type == redirect_output)
             {
@@ -133,6 +147,8 @@ int     get_redirection_status(t_command *head_command)
                 }
                 else if (len > 2)
                     return (0);
+                else
+                    head_command[i].redirect_type = current_token->type;
             }
             current_token = current_token->next;
         }

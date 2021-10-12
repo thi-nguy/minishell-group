@@ -52,6 +52,7 @@ int         get_number_of_pipe(t_token *head_token);
 t_token     *duplicate_token(t_token **head_token, int pipe_order);
 int         parse_command(t_token **head_token, t_command **head_command);
 int         is_enough_command(t_command *head_command, int num_pipe);
+void        init_redirection(t_command *head_command, int num_pipe);
 int         get_redirection_status(t_command *head_command);
 void        get_file_path(t_command *head_command);
 void        get_command(t_command *head_command);

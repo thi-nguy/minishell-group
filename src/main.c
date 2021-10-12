@@ -33,78 +33,90 @@ void	update_exit_code(int exit_code)
 
 int	main(int ac, char **av, char **ev)
 {
-	//char	*line;
-	//t_token	*head_token;
-	//int		exit_code;
-	//t_command *head_command;
-
-	//get_env_list(ev);
-	//head_token = NULL;
-	//line = NULL;
-	//line = readline("minishell > ");
-	//exit_code = 0;
-	//add_exit_code_to_env_list(exit_code);
-	////TODO 1: handle signal: Ctr C, Ctr "\"
-	//while (1)
-	//{
-	//	update_exit_code(exit_code);
-	//	add_history(line);
-	// 	// TODO 2: tokenizer inputs, handle Ctr D
-	// 	tokenizer(line, &head_token);
-	// 	// TODO 3: Concatenate same type tokens
-	// 	if (build_lexer(&head_token) == -1)
-	// 		exit_code = 1;
-
-	//	// * for debug build_lexer
-	// 	//t_token		*current_token;
-	// 	//current_token = head_token;
-	// 	//while (current_token)
-	// 	//{
-	// 	//	printf("Data node: |%s| \t Type of data: |%d|\n", current_token->value, current_token->type);
-	// 	//	current_token = current_token->next;
-	// 	//}
-	// 	// TODO 4: Check validity of command line / get linked list of command
-	// 	exit_code = parse_command(&head_token, &head_command);
-	//	//if (exit_code == 0)
-	//		// TODO 5: execute commands
-	//		// exit_code = execute_commands(&head_command);
-	// 	free_all_memory(&head_token);
-	// 	head_token = NULL;
-	// 	line = readline("minishell > ");
-	//}
-
-//// * For debug
- 	t_token		*head_token;
- 	t_token		*current_token;
-	t_command	*head_command;
- 	char *line = "echo hehe >> abc|pwd >> xyz ";
+	char	*line;
+	t_token	*head_token;
 	int		exit_code;
+	t_command *head_command;
 
-	exit_code = 0;
- 	get_env_list(ev);
-	add_exit_code_to_env_list(exit_code);
+	get_env_list(ev);
 	head_token = NULL;
- 	tokenizer(line, &head_token);
- 	if (build_lexer(&head_token) == -1)
- 	{
- 		printf("Error\n");
- 		return (0);
- 	}
-	// print_item(&head_token);
-	exit_code = parse_command(&head_token, &head_command);
-	int num_pipe = get_number_of_pipe(head_token);
-	int i = 0;
-	while (i <= num_pipe)
+	line = NULL;
+	line = readline("minishell > ");
+	exit_code = 0;
+	add_exit_code_to_env_list(exit_code);
+	//TODO 1: handle signal: Ctr C, Ctr "\"
+	while (1)
 	{
-		printf("\nCommand number: %d\n", i);
-		printf("Type de direction: %d\n", head_command[i].redirect_type);
-		printf("File path: %s\n", head_command[i].file_path);
-		printf("command: %s\n", head_command[i].command);
-		printf("Command argument: \n");
-		print_item(&head_command[i].command_line);
-		i++;
+		update_exit_code(exit_code);
+		add_history(line);
+		// TODO 2: tokenizer inputs, handle Ctr D
+		tokenizer(line, &head_token);
+		// TODO 3: Concatenate same type tokens
+		if (build_lexer(&head_token) == -1)
+			exit_code = 1;
+
+		// * for debug build_lexer
+		//t_token		*current_token;
+		//current_token = head_token;
+		//while (current_token)
+		//{
+		//	printf("Data node: |%s| \t Type of data: |%d|\n", current_token->value, current_token->type);
+		//	current_token = current_token->next;
+		//}
+		// TODO 4: Check validity of command line / get linked list of command
+		exit_code = parse_command(&head_token, &head_command);
+		// * for debug parse_command
+		// int num_pipe = get_number_of_pipe(head_token);
+		// int i = 0;
+		// while (i <= num_pipe)
+		// {
+		// 	printf("\nCommand number: %d\n", i);
+		// 	printf("Type de direction: %d\n", head_command[i].redirect_type);
+		// 	printf("File path: %s\n", head_command[i].file_path);
+		// 	printf("command: %s\n", head_command[i].command);
+		// 	printf("Command argument: \n");
+		// 	print_item(&head_command[i].command_line);
+		// 	i++;
+		// }
+		if (exit_code == 0)
+			// TODO 5: execute commands
+			//exit_code = execute_commands(&head_command);
+		free_all_memory(&head_token);
+		head_token = NULL;
+		line = readline("minishell > ");
 	}
 
+//// * For debug
+ 	// t_token		*head_token;
+ 	// t_token		*current_token;
+	// t_command	*head_command;
+ 	// char *line = "echo \"haha \" > file | pwd | cd ..";
+	// int		exit_code;
+
+	// exit_code = 0;
+ 	// get_env_list(ev);
+	// add_exit_code_to_env_list(exit_code);
+	// head_token = NULL;
+ 	// tokenizer(line, &head_token);
+ 	// if (build_lexer(&head_token) == -1)
+ 	// {
+ 	// 	printf("Error\n");
+ 	// 	return (0);
+ 	// }
+	// // print_item(&head_token);
+	// exit_code = parse_command(&head_token, &head_command);
+	// int num_pipe = get_number_of_pipe(head_token);
+	// int i = 0;
+	// while (i <= num_pipe)
+	// {
+	// 	printf("\nCommand number: %d\n", i);
+	// 	printf("Type de direction: %d\n", head_command[i].redirect_type);
+	// 	printf("File path: %s\n", head_command[i].file_path);
+	// 	printf("command: %s\n", head_command[i].command);
+	// 	printf("Command argument: \n");
+	// 	print_item(&head_command[i].command_line);
+	// 	i++;
+	// }
 	//free_all_memory(&head_token);
 
 	// *for debug free memory
