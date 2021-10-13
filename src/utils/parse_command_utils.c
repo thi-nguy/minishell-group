@@ -53,7 +53,8 @@ int     get_redirection_status(t_command *head_command)
         current_token = head_command[i].command_line;
         while(current_token->next != NULL)
         {
-            len = ft_strlen(current_token->value);
+            if (current_token->type == redirect_input || current_token->type == redirect_output)
+                len = ft_strlen(current_token->value);
             if (current_token->type == redirect_input)
                 update_redirection_type(len, &head_command[i].redirect_type, &current_token->type, redirect_input);
             else if (current_token->type == redirect_output)

@@ -6,7 +6,7 @@ int     parse_command(t_token **head_token, t_command **head_command)
     int     i;
 
     num_pipe = get_number_of_pipe(*head_token);
-    *head_command = (t_command *)malloc(sizeof(t_command) + (num_pipe + 1));
+    *head_command = (t_command *)malloc(sizeof(t_command) * (num_pipe + 1));
     if (!*head_command)
         return (1);
     i = 0;
