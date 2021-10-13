@@ -4,8 +4,8 @@
 typedef enum		e_token_type
 {
 	redirect_input, // <
-	redirect_output, // >
 	double_redirect_input, // <<
+	redirect_output, // >
 	double_redirect_output, // >>
 	pipe_symbol, // |
 	single_quote, // '

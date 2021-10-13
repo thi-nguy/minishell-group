@@ -28,7 +28,6 @@ void	    free_all_memory_env(t_env **head_token);
 int         build_lexer(t_token **token_list);
 void        join_same_type_token(t_token *current_token);
 void        remove_token_node(t_token *node);
-void        remove_token_node_2(t_token *node, t_token **head);
 
 int         handle_quote(t_token *current_token);
 void        handle_variable_inside_quote(t_token *variable_token);
@@ -62,6 +61,7 @@ void        get_argument_array(t_command *head_command);
 
 void        delete_node(t_token **head_ref, t_token *node);
 void	    handle_signale_ctrl_c(int sig);
+int         update_redirection_type(int len, e_type *command_type, e_type *token_type, e_type new_type);
 // Functions outside of project.
 void    print_item(t_token **token);
 

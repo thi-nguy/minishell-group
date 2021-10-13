@@ -6,10 +6,6 @@ e_type        get_token_type(char c)
         return (redirect_output);
     else if (c == '<')
         return (redirect_input);
-    // else if (c == '>>')
-    //     return (double_left_redirection);
-    // else if (c == '<<')
-    //     return (double_right_redirection);ech
     else if (c == '|')
         return (pipe_symbol);
     else if (c == '\'')

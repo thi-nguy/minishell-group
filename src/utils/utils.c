@@ -12,6 +12,44 @@
 
 #include "../../include/minishell.h"
 
+void	add_exit_code_to_env_list(int exit_code)
+{
+	t_env		*new_env;
+
+	new_env = (t_env *)malloc(sizeof(t_env));
+    if (!new_env)
+        return ;
+	new_env->name = ft_strdup("EXIT_CODE");
+    new_env->value = ft_itoa(exit_code);
+    new_env->next = NULL;
+    new_env->prev = NULL;
+	add_env_to_end(new_env);
+}
+
+void	update_exit_code(int exit_code)
+{
+    t_env   *current_env;
+
+    current_env = g_head_env;
+    while (current_env)
+    {
+        if (ft_strcmp("EXIT_CODE", current_env->name) == 1)
+        {
+			current_env->value = ft_itoa(exit_code);
+			return ;
+        }
+        current_env = current_env->next;
+    }
+}
+
+
+void	handle_signale_ctrl_c(int sig)
+{
+	// Todo: free memory?
+	write(STDOUT_FILENO, "\nminishell > ", 13);
+}
+
+
 void	free_all_memory(t_token **head_token)
 {
     t_token      *current_token;

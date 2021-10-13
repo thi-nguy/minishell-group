@@ -14,9 +14,13 @@ SRC = 	./src/main.c\
 		./src/tokenizer/tokenizer.c\
 		./src/tokenizer/handle_variable.c\
 		./src/tokenizer/parse_command.c\
+		./src/tokenizer/build_lexer.c\
 		./src/utils/utils.c\
 		./src/utils/get_env_list.c\
-		./src/tokenizer/build_lexer.c\
+		./src/utils/build_lexer_utils.c\
+		./src/utils/handle_variable_utils.c\
+		./src/utils/parse_command_utils.c\
+		./src/utils/token_utils.c\
 		./src/utils/utils_outside_project.c\
 		./src/built-ins/exit.c ./src/built-ins/pwd.c ./src/built-ins/echo.c\
 		./src/built-ins/env.c ./src/built-ins/unset.c ./src/utils/exec_coms_utils.c
