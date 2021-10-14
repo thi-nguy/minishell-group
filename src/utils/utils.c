@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 18:48:22 by idamoutto         #+#    #+#             */
-/*   Updated: 2021/10/14 12:01:37 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/14 12:35:37 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	update_exit_code(int exit_code)
 	current_env = g_head_env;
 	while (current_env)
 	{
-        if (ft_strcmp("EXIT_CODE", current_env->name) == 1)
+		if (ft_strcmp("EXIT_CODE", current_env->name) == 1)
 		{
 			current_env->value = ft_itoa(exit_code);
 			return ;
@@ -42,13 +42,11 @@ void	update_exit_code(int exit_code)
 	}
 }
 
-
 void	handle_signale_ctrl_c(int sig)
 {
 	// Todo: free memory?
 	write(STDOUT_FILENO, "\nminishell > ", 13);
 }
-
 
 void	free_all_memory(t_token **head_token)
 {
@@ -59,11 +57,11 @@ void	free_all_memory(t_token **head_token)
 	{
 		while (current_token->next)
 		{
-            current_token = current_token->next;
-            free(current_token->prev->value);
-            current_token->prev->value = NULL;
-            free(current_token->prev);
-            current_token->prev = NULL;
+			current_token = current_token->next;
+			free(current_token->prev->value);
+			current_token->prev->value = NULL;
+			free(current_token->prev);
+			current_token->prev = NULL;
 		}
 		free(current_token->value);
 		current_token->value = NULL;
@@ -81,13 +79,13 @@ void	free_all_memory_env(t_env **head_env)
 	{
 		while (current_env->next)
 		{
-            current_env = current_env->next;
-            free(current_env->prev->value);
-            current_env->prev->value = NULL;
-            free(current_env->prev->name);
-            current_env->prev->name = NULL;
-            free(current_env->prev);
-            current_env->prev = NULL;
+			current_env = current_env->next;
+			free(current_env->prev->value);
+			current_env->prev->value = NULL;
+			free(current_env->prev->name);
+			current_env->prev->name = NULL;
+			free(current_env->prev);
+			current_env->prev = NULL;
 		}
 		free(current_env->value);
 		current_env->value = NULL;

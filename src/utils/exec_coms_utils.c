@@ -6,7 +6,7 @@
 /*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 15:51:09 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/05 16:25:24 by idamouttou       ###   ########.fr       */
+/*   Updated: 2021/10/14 12:37:14 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exec_builtin(char *name, char **args, t_list *envlist)
 {
-    int	i;
+	int	i;
 
 	i = 0;
 	while (name[i])
@@ -24,8 +24,8 @@ void	exec_builtin(char *name, char **args, t_list *envlist)
 	}
 	if (ft_strcmp("echo", name) == 0)
 		g_excd_sig.excode = my_echo(args);
-    if (ft_strcmp("exit", name) == 0)
-		g_excd_sig.excode  = my_exit(args);
+	if (ft_strcmp("exit", name) == 0)
+		g_excd_sig.excode = my_exit(args);
 	if (ft_strcmp("pwd", name) == 0)
 		g_excd_sig.excode = my_pwd();
 	if (ft_strcmp("env", name) == 0)
