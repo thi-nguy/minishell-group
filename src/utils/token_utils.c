@@ -1,6 +1,6 @@
 #include "../include/minishell.h"
 
-t_token     *create_token_node(char *str, e_type type)
+t_token     *create_token_node(char *str, t_type type)
 {
     t_token *new_token;
     char    *value;
