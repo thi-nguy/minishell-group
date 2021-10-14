@@ -6,12 +6,14 @@
 /*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:11 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/14 01:01:38 by idamouttou       ###   ########.fr       */
+/*   Updated: 2021/10/14 16:16:45 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
 //echo test2 >> text.txt rajoute a la fin du fichier le nouveau argument 
+
 void	two_right_exec(t_ast *self)
 {
 	int	redir_fd;
@@ -23,7 +25,9 @@ void	two_right_exec(t_ast *self)
 	close (redir_fd);
 }
 
-//echo test > ida cree un fichier txt et ecrit test si dans le meme fichier ecrase lancien parametre
+//echo test > ida cree un fichier txt et ecrit test si dans le meme
+//fichier ecrase lancien parametre
+
 void	one_right_exec(t_ast *self)
 {
 	int	redir_fd;
@@ -34,16 +38,17 @@ void	one_right_exec(t_ast *self)
 	dup2(redir_fd, 1);
 	close(redir_fd);
 }
-// echo test < ida cree le fichier txt et ecrit le parametre et affiche le texte et ecrase aussi ancien parametre si le fichier sinon exit error 
+
+// echo test < ida cree le fichier txt et ecrit le parametre et affiche le
+// texte et ecrase aussi ancien parametre si le fichier sinon exit error 
+
 void	one_left_exec(t_ast *self)
 {
 	int	redir_fd;
 
-	redir_fd = open(self->left->token, O_RDONLY , S_IRWXU); //L'utilisateur a les autorisations de lecture, écriture, exécution.
+	redir_fd = open(self->left->token, O_RDONLY, S_IRWXU);
 	if (redir_fd < 0)
-	{
-			printf("%s:\n", strerror(errno));
-	}
+		printf("%s:\n", strerror(errno));
 	dup2(redir_fd, 0);
 	close (redir_fd);
 }
@@ -54,7 +59,9 @@ void	one_left_exec(t_ast *self)
 // cat << ida "mon nom est $USER" arret = ida affiche mon nom est idamouttou
 // echo << ida $USER ida affiche idamouttou dasn herdoc
 //handle two pour ex "cat" << ida
-//env ?= << s ecrit le text puis ecrire s pour arret affiche la liste de env et ecrit le text dans le heredoc
+//env ?= << s ecrit le text puis ecrire s pour arret affiche la liste de
+//env et ecrit le text dans le heredoc
+
 void	two_left_exec(t_ast *self, t_list *envlist)
 {
 	int		redir_fd;
@@ -78,7 +85,9 @@ void	two_left_exec(t_ast *self, t_list *envlist)
 	dup2(redir_fd, 0);
 	close (redir_fd);
 }
+
 //appel des differente redirection 
+
 void	redir_exec(t_ast	*self, t_list *envlist)
 {
 	if (ft_strcmp(self->token, ">") == 0)

@@ -6,12 +6,14 @@
 /*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:29:40 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/05 02:21:52 by idamouttou       ###   ########.fr       */
+/*   Updated: 2021/10/14 16:08:31 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
 //check si cest un chiffre
+
 int	check_number(char *str)
 {
 	if (!ft_strchr("0123456789-", *str))
@@ -25,9 +27,11 @@ int	check_number(char *str)
 	}
 	return (1);
 }
+
 //commande exit sans option quit le programm
 //error si non valeur numeric si plusieur valeur numeric
 // touch exit controle d
+
 int	my_exit(char **tmp)
 {
 	int	excode;

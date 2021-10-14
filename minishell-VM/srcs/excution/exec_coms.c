@@ -6,12 +6,14 @@
 /*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:02 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/13 15:47:56 by idamouttou       ###   ########.fr       */
+/*   Updated: 2021/10/14 16:12:49 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
 //check les argument existe command permision et malloc
+
 char	**collect_args(t_ast *self)
 {
 	char	**res;
@@ -27,8 +29,10 @@ char	**collect_args(t_ast *self)
 	}
 	return (res);
 }
+
 //initialisatin build presence de A->Z
 //check le nom des command 
+
 int	is_builtin(t_ast *self)
 {
 	char	*tmp;
@@ -52,8 +56,10 @@ int	is_builtin(t_ast *self)
 	free(tmp);
 	return (i);
 }
+
 //Script terminated by Control-C code 130
 //code 131 controle  D
+
 void	handle_chldsig(int status)
 {
 	if (WTERMSIG(status) == SIGQUIT)
@@ -67,9 +73,11 @@ void	handle_chldsig(int status)
 		g_excd_sig.excode = 130;
 	}
 }
+
 //excute le programme
 //attend que le processus change detat
 //appel fonction c+d et C+C
+
 void	get_exit_code(char *token, char **args, t_list *envlist)
 {
 	int	pid;
@@ -81,13 +89,16 @@ void	get_exit_code(char *token, char **args, t_list *envlist)
 	if (g_excd_sig.excode < 130 || g_excd_sig.excode > 132)
 		g_excd_sig.excode = WEXITSTATUS(status);
 }
+
 //demarage des execution 
 // trim Supprime tous les caractères correspondant 
-//à un espace blanc au début et à la fin de la chaîne actuelle sauf quan dil ya un single ou double quote
+//à un espace blanc au début et à la fin de la chaîne actuelle
+//sauf quan dil ya un single ou double quote
 //check les argument et malloc
 //is builltin check le nom des command
 //appel chaque command avec leur fonction 
 //get exit code = controle d et c 
+
 void	cmd_exec(t_ast *self, t_list *envlist)
 {
 	char	**args;

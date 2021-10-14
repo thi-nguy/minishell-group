@@ -6,7 +6,7 @@
 /*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:35 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/14 00:04:18 by idamouttou       ###   ########.fr       */
+/*   Updated: 2021/10/14 16:20:30 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 //ajout des noeud en fonction des de pipe et de la redirection 
 //noeud de gauche
+
 t_ast	*add_to_redir_pipe(t_ast *res, t_ast *node)
 {
 	if (res->type == REDIR)
@@ -37,7 +38,6 @@ t_ast	*add_to_redir_pipe(t_ast *res, t_ast *node)
 // si node < node = res = node
 // si node == node = PIPE = res = node
 //mais si < renvoie une redirection de pipe 
-//
 
 t_ast	*add_node(t_ast *tree, t_ast *node)
 {
@@ -53,7 +53,7 @@ t_ast	*add_node(t_ast *tree, t_ast *node)
 	}
 	else if (node->type == res->type)
 	{
-		if (node->type == PIPE) //|| node->type == SEMICOL)
+		if (node->type == PIPE)
 		{
 			node->right = res;
 			res = node;
@@ -65,8 +65,11 @@ t_ast	*add_node(t_ast *tree, t_ast *node)
 		res = add_to_redir_pipe(res, node);
 	return (res);
 }
-//permet de retire les espace avant ou apres dans une chaine de caracter suaf en presences des quote 
+
+//permet de retire les espace avant ou apres dans une chaine
+//de caracter suaf en presences des quote 
 //retourn line
+
 char	*ft_quottrim(char *line)
 {
 	ssize_t	*utils;
@@ -95,11 +98,13 @@ char	*ft_quottrim(char *line)
 	free(utils);
 	return (line);
 }
+
 //creation du noyau renvoie vers la redirection
 //check les rediction >< >><< creaction du heredoc
 //check pipe exuction fd stdin et stdout
 //command exuction 
 //evaluation des noeud droite et gauche
+
 t_ast	*create_node(char *token)
 {
 	t_ast	*res;	
@@ -128,8 +133,10 @@ t_ast	*create_node(char *token)
 	res->right = NULL;
 	return (res);
 }
+
 //creation du noyau redirection check pipe
 // ajout noeud 
+
 t_ast	*generate_ast(char **tokens)
 {
 	t_ast	*res;

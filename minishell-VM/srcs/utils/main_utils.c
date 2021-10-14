@@ -6,12 +6,14 @@
 /*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:53 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/14 01:01:36 by idamouttou       ###   ########.fr       */
+/*   Updated: 2021/10/14 16:29:53 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
 //check pipe redirection 
+
 int	check_ast(t_ast *tree)
 {
 	if (tree == NULL)
@@ -23,12 +25,13 @@ int	check_ast(t_ast *tree)
 		return (0);
 	if (!check_ast(tree->left))
 		return (0);
-	return (1); 
+	return (1);
 }
 
 //excution de ast
 //check si erreur dans la commmand
 //duplication fd 
+
 void	exec_ast(t_ast *tree, t_list *envlist)
 {
 	int	orig_fd[2];
@@ -72,7 +75,8 @@ void	free_ast(t_ast *ast)
 }
 
 //"cat" << ida une fois termine affiche le cat si pas de "" naffiche rien 
-//"echo" << ida une fois termine saut al line \n et affiche rien meme dans le herdoc
+//"echo" << ida une fois termine saut al line \n et affiche
+//rien meme dans le herdoc
 
 char	*handle_two_left(char *str, int redir_fd, t_list *envlist)
 {
@@ -90,4 +94,3 @@ char	*handle_two_left(char *str, int redir_fd, t_list *envlist)
 	free(str);
 	return (NULL);
 }
-

@@ -6,12 +6,14 @@
 /*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:06 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/13 22:19:18 by idamouttou       ###   ########.fr       */
+/*   Updated: 2021/10/14 16:13:17 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
 //idem que le out stdin = clavier = 0
+
 int	change_in(t_ast *node, int *fd_redir, t_list *envlist)
 {
 	int	pid;
@@ -27,10 +29,13 @@ int	change_in(t_ast *node, int *fd_redir, t_list *envlist)
 	}
 	return (pid);
 }
+
 //stdout = ecran = 1
 //creation du file fils grace a fork 
-//close le file descriptor pour ferme les extremite du pipe le duplique et ferme et quit
+//close le file descriptor pour ferme les extremite du pipe le duplique
+//et ferme et quit
 // et si une deuxime command appel de exec
+
 int	change_out(t_ast *node, int *fd_redir, t_list *envlist)
 {
 	int	pid;
@@ -46,9 +51,11 @@ int	change_out(t_ast *node, int *fd_redir, t_list *envlist)
 	}
 	return (pid);
 }
+
 //check si il y a des pipe
 // pipe lu que dans des file descriptor in et out
 //waitpid attend que le fils change detat
+
 void	pipe_exec(t_ast *self, t_list *envlist)
 {
 	int	fd_redir[2];

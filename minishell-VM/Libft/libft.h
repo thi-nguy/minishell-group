@@ -6,7 +6,7 @@
 /*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:24:20 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/09 01:50:06 by idamouttou       ###   ########.fr       */
+/*   Updated: 2021/10/14 15:57:38 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 # include <string.h>
 # include <unistd.h>
 
-//noeud = liste chainee sous forme de structure
+// noeud = liste chainee sous forme de structure
 // content = element donne pour chaque noeud
-//next = pointeur pour stocker laddress du noeud suivant ce pointeur sert de lien entre chaque noeud
+// next = pointeur pour stocker laddress du noeud suivant ce pointeur sert 
+// de lien entre chaque noeud
 
 typedef struct s_list
 {
@@ -73,8 +74,8 @@ char			*ft_strrchr(const char *s, int c);
 char			*ft_strnstr(const char *big, const char *little, size_t len);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 void			*ft_calloc(size_t nmemb, size_t size);
-int 			ft_isprint_no_equal(int c);
-int 			ft_isprint_no_equal(int c);
+int				ft_isprint_no_equal(int c);
+int				ft_isprint_no_equal(int c);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_strcmp(const char *s1, const char *s2);
 #endif

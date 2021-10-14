@@ -6,13 +6,15 @@
 /*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:29:55 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/04 23:31:37 by idamouttou       ###   ########.fr       */
+/*   Updated: 2021/10/14 16:11:08 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
 //efface les paramettre apres le egale de la variable
 //et free
+
 int	unset_one(char *var, t_list *env)
 {
 	int		i;
@@ -36,8 +38,10 @@ int	unset_one(char *var, t_list *env)
 	}
 	return (1);
 }
+
 //check argument apres command unset error
 //unset = Nom varriable error pour le = mais excute la command
+
 int	my_unset(char **var, t_list *env)
 {
 	if (var[1] == NULL)

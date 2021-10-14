@@ -6,15 +6,15 @@
 /*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:17:50 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/04 23:27:18 by idamouttou       ###   ########.fr       */
+/*   Updated: 2021/10/14 15:49:38 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isprint_no_equal(int c)
+int	ft_isprint_no_equal(int c)
 {
-    if (c == 61 || c == 46)
-        return (1);
-    return (0);
+	if (c == 61 || c == 46)
+		return (1);
+	return (0);
 }

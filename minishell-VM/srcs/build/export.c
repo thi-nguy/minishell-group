@@ -6,14 +6,16 @@
 /*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:29:46 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/04 23:31:41 by idamouttou       ###   ########.fr       */
+/*   Updated: 2021/10/14 16:10:34 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
 // check le egal segm fault si pas fin
 //export ida= cree la variable 
 //free content 
+
 int	export_one(char *varval, t_list *env)
 {
 	int		i;
@@ -74,8 +76,11 @@ void	list_add(t_list **alst, t_list *newElement)
 		sort_alpha(alst);
 	}
 }
-//check apres la command export si un chiffre ou caractere speciaux et renvoie une erreur
+
+//check apres la command export si un chiffre ou
+//caractere speciaux et renvoie une erreur
 //export 123 ou export > ou = ou .
+
 int	check_export(char **varval)
 {
 	while (*varval)
@@ -91,10 +96,13 @@ int	check_export(char **varval)
 	}
 	return (0);
 }
+
 //command expot
 //print sorted check export sans argument et sort la liste des variable
 //check export error valeur numeric ou speciaux
-//export one check si apres egale pas de argumment cree la variable et cree si argument si chaine de caractere vide ou non 
+//export one check si apres egale pas de argumment cree la variable et
+//cree si argument si chaine de caractere vide ou non 
+
 int	my_export(char **varval, t_list *env)
 {
 	if (varval[1] == NULL)
