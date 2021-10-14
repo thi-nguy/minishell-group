@@ -1,0 +1,98 @@
+
+test ok
+
+env -i ./minishell = ok
+>test = cree test = ok
+>>test2 = cree test2 = ok
+ls | cat = ok
+cat | ls  = affiche ls et doit exit apres un \n ok 
+./includes ash.h = permission denied ok 
+./test.c  permissin denied ok 
+cat < directory = minishell: stdin: Is a directory ok 
+export A="s -la" puis faire l$A = affiche ls -la et remplace le var de env = ok
+export A=p puis faire export B=w puis $A"$B"d excute un pwd = ok et faire "$A"'$B'd = focntion avec les simple quote 
+echo "ls -la <a | grep x > b" affiche ls -la <a | grep x > b = ok
+echo ok "" ok = affiche espace ok "ok  ok"
+echo ok "" "" "" "" "" "" "" "" "" ok = ok          ok = ok
+export OK="ok                   ok puis faire echo $OK et affcihe "ok ok" = ok
+s > fichier | wc = command not found pour le s et affiche        0       0       0 = ok
+
+cd test ok
+cd ;cd ..; cd .; cd /Users; cd //; cd '//'; cd //////; cd ./././; cd /; cd '/////' 2>/dev/null; cd '/etc'; cd '/var'; cd "doesntexist"; cd ../../..; cd ?;cd +; cd _; cd '/'
+
+echo test ok 
+
+echo; echo echo; eCho; eCHO; eChO; ECHO; echo rhobebou; echo stop barking; echo "bonjour"; echo bonjour; echo 'bonjour'; echo -n bonjour; echo "-n" bonjour;
+echo -n"-n" bonjour; echo -n"-n" bonjour; echo "-n -n -n"-n bonjour ; echo "-n '-n'" bonjour; echo ~; echo "~"; echo '~'; echo ~123; echo 123~;
+echo ~/123; echo $USER; echo "$USER"; echo "'$USER'"; echo " '$USER' ";echo text"'$USER'" ' $USER ';echo "text"   "$USER"    "$USER";
+echo '              $USER          '; echo               text "$USER"            "$USER"text;echo ''''''''''$USER'''''''''';
+echo """"""""$USER"""""""";echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''; echo $USER '' $USER $USER '' $USER '' $USER -n $USER;
+echo ' \' ' \'; echo '\" ' " \"\""; echo \\\" \\\" \\\" \\\"\\\"\\\" \\\'\\\'\\\';echo "$USER""$USER""$USER"; echo '$USER' "$USER" "text \' text"; echo '$USER'
+echo $USER " ";echo "$USER""Users/$USER/file""'$USER'"'$USER'; echo '$USER'"$USER"'$USER'; echo '"$USER"''$USER'"""$USER";
+echo " $USER  "'$PWD'; echo " $USER  \$ "'$PWD'; echo $USER=4;echo $USER; echo $?; echo $USER213; echo $USER $USER9999 $USER8888 $USER7777;
+echo $USER $USER9999 $USER8888 $USER7777 "$USER"; echo "text" "text$USER" ... "$USER";echo $PWD
+
+error ok
+| test; echo > <; echo | |;<; |;| | |;hello world;||||||||;cat wouaf wouaf;>;>>>>>>>>;<<<<<<<<<;> > > >;>> >> >> >>;~;<<;/Users;.;..;/
+\\\;EechoE;.echo.;>echo>;<echo<;>>echo>>;|echo|;echo -n;| echo -n oui;trying to destroy your minishell;trying something again echo if you see this message thats not a good new
+
+exit ok
+exit 0 0;exit 42 42;exit -42 -24;exit 42;exit 42 53 68;exit --1239312;exit ++++1203020103;exit ++++++0;exit -----0;exit kewkwqke
+exit a;exit "1";exit "1"23;exit "2"32"32";exit "'42'";exit '42'"42"42;exit +'42'"42"42;exit wrong;exit exit ;exit export
+
+Export test ok
+
+env | grep "_=";export | grep "SHLVL";export | grep "OLDPWD";xport | grep "PWD";export $?;export TEST;export TEST=;export TEST=123
+export ___TEST=123;export ""="";export ''='';export "="="=";export _TEST=100;export | grep "SHLVL";export ==========;export 1TEST=
+export ""="";export TES=T="";export =============123;export ________=123;export export
+
+usnet ok
+
+unset;
+
+test non ok
+
+<test = doit ouvrir le fichier
+cat <a <b >c >d  = erreur 
+echo a > file | cat = erreur ne veut pas ouvrir le fichier pb avec cat peut etre pb avec pipe mais ok output dans cat 
+cd "$PWD/file_tests" ne fonction dir que le fichier existe pas
+cd "doesntexist" 2>/dev/null = affiche error ok mais pas de saut a la ligne le minishelle est sur la meme ligne cd: no such file or directory: doesntexistminishell$
+cd "wtf" 2>/dev/null = idem que avant 
+cd $PWD/file_tests  ne va pas dans le fichier mais va dans /usere application seoule idem
+cd $OLDPWD/something idem que en haut au lieu de retourne un erreur 
+
+echo -nn bonjour affiche le n
+echo -n -n -n bonjour idem
+echo "-nnnn" bonjour idem
+echo "$USER$USER$USER" saut la ligne au lieu daffiche le user
+echo $USER$12USER$USER=4$USER12 manque le user
+echo $USER $123456789USER $USER123456789 manque USER
+echo $USER $9999USER $8888USER $7777USER idem manque 3 USER
+echo "$USER=12$USER" naffiche rien
+echo "$9USER" "'$USER=12$SOMETHING'"
+echo $PWD/file affiche r
+echo "$PWD/file" affiche r
+
+EXIT non ok
++0 
+pb le + lefontction pas le moins si inverssion 
+
+Export non ok
+--TEST=123 doir renvoye une error
+export TE\\\ST=100 idem si \error a voir avec le sujet
+export TE-ST=100 le - daoit renvoye error
+export -TEST=100 idem
+export TEST-=100 idem
+export TE+S=T=""
+export TE+S=T="" = le + error
+export TES.T=123 = le . error
+export TES}T=123 = le {} error
+export TE*ST=123 = le * error
+export TES#T=123 = le # erorr
+export TES@T=123 = @ error
+export TES!T=123 = le ! error
+export TES?T=123 = error sauf si apres $ mais eroor si avant
+export +++++++=123 error pour + et ++ avec ou sans chiffre
+export TES^T=123 = eror pour le export ^=123
+export TES\~T=123 = error vague
+export TEST+=100 error 
