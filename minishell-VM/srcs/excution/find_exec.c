@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:16 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/14 16:17:29 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/15 12:01:48 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,13 @@ int	found_binary(char *folder, char *filename, DIR *cur_dir)
 char	*check_path(char *path, char *filename)
 {
 	char			**folders;
+	char			**to_be_free_folders;
 	DIR				*cur_dir;
+	char			*found_path;
 
+	found_path = NULL;
 	folders = ft_split(path, ':');
+	to_be_free_folders = folders;
 	while (*folders != NULL)
 	{
 		cur_dir = opendir(*folders);
@@ -73,7 +77,11 @@ char	*check_path(char *path, char *filename)
 		closedir(cur_dir);
 		folders++;
 	}
-	return (*folders);
+	if (*folders)
+		found_path = ft_strdup(*folders);
+	free_arr(to_be_free_folders);
+	return (found_path);
+	// return (*folders);
 }
 
 //cherche le nom du file si il existe ou pas
@@ -97,7 +105,14 @@ char	*find_exec(t_list *env, char *filename)
 	path_copy += 5;
 	foundpath = (check_path(path_copy, filename));
 	if (foundpath)
+	{
+		free(path_copy);
+		path_copy = NULL;
 		return (ft_strjoin(ft_strjoin(foundpath, "/"), filename));
+	}
+	path_copy -= 5;
+	free(path_copy);
+	path_copy = NULL;
 	g_excd_sig.excode = 127;
 	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:25:46 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/14 00:04:05 by idamouttou       ###   ########.fr       */
+/*   Updated: 2021/10/15 10:58:20 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,7 @@
 void	print_sorted(t_list *env);
 int		find_symbol(char *str, char sym);
 char	*get_env_val(char *env_name, t_list *envlist);
+
+void delete_list(t_list **head_ref);
+
 #endif
