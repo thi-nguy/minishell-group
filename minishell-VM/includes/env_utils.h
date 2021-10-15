@@ -18,7 +18,6 @@
 void	print_sorted(t_list *env);
 int		find_symbol(char *str, char sym);
 char	*get_env_val(char *env_name, t_list *envlist);
-
-void delete_list(t_list **head_ref);
+void	delete_list(t_list **head_ref);
 
 #endif

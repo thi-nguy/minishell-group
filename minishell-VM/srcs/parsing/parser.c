@@ -118,6 +118,5 @@ char	*split_to_tokens(char *input, char ***arr_tokens)
 			start_of_token = add_token(arr_tokens,
 					input, start_of_token, end_of_token);
 	}
-	// free(input);
 	return (NULL);
 }

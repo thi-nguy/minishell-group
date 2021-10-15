@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:48 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/14 16:28:46 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/15 12:28:21 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,21 @@ void	concat_arr(char ***a, char **b)
 	}
 	if (b)
 		free(b);
+}
+
+void	delete_list(t_list **head_ref)
+{
+	t_list	*current;
+	t_list	*next;
+
+	current = *head_ref;
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current->content);
+		current->content = NULL;
+		free(current);
+		current = next;
+	}
+	*head_ref = NULL;
 }

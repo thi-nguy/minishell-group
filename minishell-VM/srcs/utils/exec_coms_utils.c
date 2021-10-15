@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:44 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/15 11:33:01 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/15 12:06:12 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ int	my_execve(char *file, char **args, t_list *envlist)
 			path = file;
 		else
 			path = find_exec(envlist, file);
-		//free(envlist);
 		delete_list(&envlist);
 		execve(path, args, envarr);
 		error_exit();

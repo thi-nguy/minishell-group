@@ -81,7 +81,6 @@ char	*check_path(char *path, char *filename)
 		found_path = ft_strdup(*folders);
 	free_arr(to_be_free_folders);
 	return (found_path);
-	// return (*folders);
 }
 
 //cherche le nom du file si il existe ou pas
