@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:25:56 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/14 15:48:17 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/14 18:04:09 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <curses.h>
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -27,9 +26,6 @@
 # include <dirent.h>
 # include <signal.h>
 # include <sys/wait.h>
-# include <term.h>
-# include <termcap.h>
-# include <term_entry.h>
 # include <string.h>
 # include <sys/ioctl.h>
 # include <dirent.h>

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:25 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/14 16:19:18 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/15 10:13:04 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,6 @@ char	*split_to_tokens(char *input, char ***arr_tokens)
 			start_of_token = add_token(arr_tokens,
 					input, start_of_token, end_of_token);
 	}
-	free(input);
+	// free(input);
 	return (NULL);
 }

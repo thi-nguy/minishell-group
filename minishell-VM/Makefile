@@ -1,19 +1,9 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/04 23:31:12 by idamouttou        #+#    #+#              #
-#    Updated: 2021/10/11 22:17:43 by idamouttou       ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+
 LIBFT = -L./Libft/
 
 LINK = -lft -lreadline
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 CC = gcc -g -I./includes/
 
