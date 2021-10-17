@@ -3,7 +3,7 @@ LIBFT = -L./Libft/
 
 LINK = -lft -lreadline
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 CC = gcc -I./includes/
 

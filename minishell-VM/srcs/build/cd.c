@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:29:10 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/14 16:08:01 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/17 14:52:57 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	my_cd(char **path, t_list *envlist)
 	oldpwd = getcwd(NULL, 0);
 	ch = chdir(tmp);
 	free(tmp);
+	tmp = NULL;
 	if (ch < 0)
 		return (handle_inval_cd(*path, oldpwd));
 	change_var(envlist, oldpwd, "OLDPWD");
@@ -82,5 +83,6 @@ int	my_cd(char **path, t_list *envlist)
 	tmp = getcwd(NULL, 0);
 	change_var(envlist, tmp, "PWD");
 	free(tmp);
+	tmp = NULL;
 	return (0);
 }

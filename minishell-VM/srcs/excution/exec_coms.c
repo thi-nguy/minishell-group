@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_coms.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:02 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/14 16:12:49 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/17 14:44:58 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,18 @@ int	is_builtin(t_ast *self)
 	}
 	i = 0;
 	if (ft_strchr(self->token, '/'))
+	{
+		free(tmp);
+		tmp = NULL;
 		return (0);
+	}
 	if (ft_strcmp("echo", tmp) * ft_strcmp("export", tmp)
 		* ft_strcmp("unset", tmp) * ft_strcmp("cd", tmp)
 		* ft_strcmp("pwd", tmp) * ft_strcmp("env", tmp)
 		* ft_strcmp("exit", tmp) == 0)
 		i = 1;
 	free(tmp);
+	tmp = NULL;
 	return (i);
 }
 

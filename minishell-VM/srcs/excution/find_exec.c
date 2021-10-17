@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:16 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/15 12:01:48 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/17 12:11:04 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ char	*find_exec(t_list *env, char *filename)
 	foundpath = (check_path(path_copy, filename));
 	if (foundpath)
 	{
+		path_copy -= 5;
 		free(path_copy);
 		path_copy = NULL;
 		return (ft_strjoin(ft_strjoin(foundpath, "/"), filename));
