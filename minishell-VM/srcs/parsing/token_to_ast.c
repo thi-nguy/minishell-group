@@ -6,7 +6,7 @@
 /*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:35 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/14 16:20:30 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/18 10:30:10 by idamouttou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,13 @@ t_ast	*create_node(char *token)
 		res->type = REDIR;
 		res->exec = redir_exec;
 	}
-	else if (ft_strcmp("|", token) == 0)
+	else if (ft_strcmp("|", token) * ft_strcmp("<<", token) == 0 )
 	{	
 		res->type = PIPE;
 		res->exec = pipe_exec;
+
+		res->type = REDIR;
+		res->exec = redir_exec;
 	}		
 	else
 	{	
