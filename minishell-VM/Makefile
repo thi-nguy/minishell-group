@@ -5,7 +5,7 @@ LINK = -lft -lreadline
 
 FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
-CC = gcc -I./includes/
+CC = gcc -g -I./includes/
 
 RM = rm -f
 

@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:31:04 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/17 16:37:39 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/18 12:37:30 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ char	**free_arr(char **arr)
 
 void	main_cycle(char *str, char **temp, t_list *envlist, t_ast *ast)
 {
+	char	*modified_str;
+
 	while (1)
 	{
 		str = readline("minishell$ ");
@@ -75,14 +77,19 @@ void	main_cycle(char *str, char **temp, t_list *envlist, t_ast *ast)
 			rl_redisplay();
 			continue ;
 		}
-		str = replace_envs(str, envlist, 0);
-		str = split_to_tokens(str, &temp);
+		modified_str = replace_envs(str, envlist, 0);
+		split_to_tokens(modified_str, &temp);
 		if (temp == NULL)
 			continue ;
 		ast = generate_ast(temp);
 		exec_ast(ast, envlist);
 		free_ast(ast);
 		temp = free_arr(temp);
+		if (modified_str);
+		{
+			free(modified_str);
+			modified_str = NULL;
+		}
 	}
 }
 

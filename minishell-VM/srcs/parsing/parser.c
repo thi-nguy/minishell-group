@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:25 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/15 10:13:04 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/18 12:37:14 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char	*replace_one(char *input, char *ptr, t_list *envlist, int dquot)
 	char	*env_val;
 	char	*first;
 	char	*second;
+	char	*result;
 
 	before = ft_substr(input, 0, ptr - input);
 	after_env = get_after_env(ptr);
@@ -30,13 +31,13 @@ char	*replace_one(char *input, char *ptr, t_list *envlist, int dquot)
 	second = replace_envs(after_env, envlist, dquot);
 	if (input)
 		free(input);
-	input = ft_strjoin(first, second);
+	result = ft_strjoin(first, second);
 	if (*env_val)
 		free(env_val);
 	free(second);
 	free(first);
 	free(before);
-	return (input);
+	return (result);
 }
 
 //check les quote apres la command env
@@ -46,6 +47,7 @@ char	*replace_one(char *input, char *ptr, t_list *envlist, int dquot)
 char	*replace_envs(char *input, t_list *envlist, int dquot)
 {
 	char	*ptr;
+	char	*result;
 
 	if (!input)
 		return (NULL);
@@ -63,7 +65,10 @@ char	*replace_envs(char *input, t_list *envlist, int dquot)
 		if (*ptr == '<' && *(ptr + 1) == '<' && !dquot)
 			ptr += 3;
 		if (*ptr == '$')
-			return (replace_one(input, ptr, envlist, dquot));
+		{
+			result = replace_one(input, ptr, envlist, dquot);
+			return(result);
+		}
 		ptr++;
 	}
 	return (input);
