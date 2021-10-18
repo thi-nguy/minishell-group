@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:31:04 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/18 12:37:30 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/18 14:57:05 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	main_cycle(char *str, char **temp, t_list *envlist, t_ast *ast)
 		exec_ast(ast, envlist);
 		free_ast(ast);
 		temp = free_arr(temp);
-		if (modified_str);
+		if (modified_str)
 		{
 			free(modified_str);
 			modified_str = NULL;
