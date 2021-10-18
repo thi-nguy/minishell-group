@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:25 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/18 12:37:14 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/18 17:34:15 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ char	*replace_envs(char *input, t_list *envlist, int dquot)
 		}
 		ptr++;
 	}
-	return (input);
+	result = ft_strdup(input);
+	return (result);
 }
 
 //alloue la memoire et check si les argument existe

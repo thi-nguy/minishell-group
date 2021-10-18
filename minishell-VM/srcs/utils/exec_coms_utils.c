@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:44 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/15 12:06:12 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/18 17:45:39 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,22 @@ char	*handle_relative_case(char *fname, t_list *envlist)
 {
 	char	*slash;
 	char	*res;
+	char	*result;
+	char 	*env_val;
 
 	if (*fname != '.')
 		return (NULL);
 	slash = ft_strrchr(fname, '/');
-	*slash = '\0';
 	chdir(fname);
 	res = getcwd(NULL, 0);
-	*slash = '/';
-	chdir(get_env_val("PWD", envlist));
-	return (ft_strjoin(res, slash));
+	env_val = get_env_val("PWD", envlist);
+	chdir((const char*)env_val);
+	result = ft_strjoin(res, slash);
+	free(res);
+	res = NULL;
+	free(env_val);
+	env_val = NULL;
+	return (result);
 }
 
 //check A->Z
