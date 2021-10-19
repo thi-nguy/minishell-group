@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sig_handlers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:30 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/14 16:19:51 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 11:22:27 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ void	signal_handler(int signo)
 		rl_on_new_line();
 		rl_redisplay();
 		g_excd_sig.signal = 1;
+	}
+	else if (signo == SIGQUIT)
+	{
+		exit(1);
 	}
 }
 

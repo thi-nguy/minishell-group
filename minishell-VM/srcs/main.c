@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:31:04 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/18 17:47:20 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 11:30:50 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,19 @@ void	main_cycle(char *str, char **temp, t_list *envlist, t_ast *ast)
 		}
 		modified_str = replace_envs(str, envlist, 0);
 		split_to_tokens(modified_str, &temp);
+		if (modified_str)
+		{
+			free(modified_str);
+			modified_str = NULL;
+		}
 		if (temp == NULL)
 			continue ;
 		ast = generate_ast(temp);
 		exec_ast(ast, envlist);
 		free_ast(ast);
 		temp = free_arr(temp);
-		if (modified_str)
-		{
-			free(modified_str);
-			modified_str = NULL;
-		}
 	}
+
 }
 
 int	main(int argc, char const *argv[], char const *envp[])
@@ -107,7 +108,7 @@ int	main(int argc, char const *argv[], char const *envp[])
 	temp = NULL;
 	str = NULL;
 	ast = NULL;
-	signal(SIGQUIT, SIG_IGN);
+	signal(SIGQUIT, signal_handler);
 	signal(SIGINT, signal_handler);
 	envlist = converter((char **)envp);
 	main_cycle(str, temp, envlist, ast);
