@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:29:10 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/17 14:52:57 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 15:22:16 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,29 @@ int	handle_inval_cd(char *path, char *oldpwd)
 //change dadrresse de repertoire
 //nouveau pwd
 
+int	is_arg_valid(char **path)
+{
+	int i;
+	
+	i = 0;
+	while (path[i] != NULL)
+		i++;
+	if (i > 1)
+		return (0);
+	return (1);
+}
+
 int	my_cd(char **path, t_list *envlist)
 {
 	int		ch;
 	char	*tmp;
 	char	*oldpwd;
 
+	if (is_arg_valid(path) == 0)
+	{
+		printf("cd: too many arguments\n");
+		return (1);
+	}
 	path++;
 	if (*path == NULL)
 		tmp = get_env_val("HOME", envlist);

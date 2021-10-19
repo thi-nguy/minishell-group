@@ -75,7 +75,7 @@ char	*replace_envs(char *input, t_list *envlist, int dquot)
 		if (*ptr == '$')
 		{
 			result = replace_one(input, ptr, envlist, dquot);
-			return(result);
+			return (result);
 		}
 		ptr++;
 	}

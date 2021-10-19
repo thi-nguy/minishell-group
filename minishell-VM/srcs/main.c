@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:31:04 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/19 11:30:50 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 15:11:21 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ void	main_cycle(char *str, char **temp, t_list *envlist, t_ast *ast)
 		if (!check_quotes(str))
 		{
 			printf("synthax error quote not closed\n");
-			rl_replace_line("", 0);
-			rl_redisplay();
 			continue ;
 		}
 		modified_str = replace_envs(str, envlist, 0);
@@ -91,7 +89,32 @@ void	main_cycle(char *str, char **temp, t_list *envlist, t_ast *ast)
 		free_ast(ast);
 		temp = free_arr(temp);
 	}
-
+	// str = "cd /home/nnhung2 /home/nnhung2/Desktop";
+	// if (!str)
+	// 	my_exit(NULL);
+	// if (ft_strlen(str) > 0)
+	// 	add_history(str);
+	// else
+	// 	return ;
+	// if (!check_quotes(str))
+	// {
+	// 	printf("synthax error quote not closed\n");
+	// 	return ;
+	// }
+	// modified_str = replace_envs(str, envlist, 0);
+	// split_to_tokens(modified_str, &temp);
+	// if (modified_str)
+	// {
+	// 	free(modified_str);
+	// 	modified_str = NULL;
+	// }
+	// if (temp == NULL)
+	// 	return ;
+	// ast = generate_ast(temp);
+	// print_ast(ast);
+	// exec_ast(ast, envlist);
+	// free_ast(ast);
+	// temp = free_arr(temp);
 }
 
 int	main(int argc, char const *argv[], char const *envp[])
