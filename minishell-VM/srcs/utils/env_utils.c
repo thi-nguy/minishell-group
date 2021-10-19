@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 01:34:06 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/14 16:27:23 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 21:46:00 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,16 @@ void	print_sorted(t_list *env)
 		print_all_sorted(sorted);
 	}
 	ft_lstclear(&free_sort, free);
+}
+
+void	free_str(char **before, char **first, char **after_env, char **env_val)
+{
+	free(*before);
+	*before = NULL;
+	free(*first);
+	*first = NULL;
+	free(*after_env);
+	*after_env = NULL;
+	free(*env_val);
+	*env_val = NULL;
 }

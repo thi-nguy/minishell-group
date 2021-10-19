@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:31:04 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/19 21:05:51 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 22:18:50 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,8 @@ void	main_cycle(char *str, char **temp, t_list *envlist, t_ast *ast)
 	while (1)
 	{
 		str = readline("minishell$ ");
-		if (!str)
-			my_exit(NULL);
-		if (ft_strlen(str) > 0)
-			add_history(str);
-		else
+		if (is_valid_str(str) == 0)
 			continue ;
-		if (!check_quotes(str))
-		{
-			printf("synthax error quote not closed\n");
-			continue ;
-		}
 		modified_str = replace_envs(str, envlist, 0);
 		split_to_tokens(modified_str, &temp);
 		if (modified_str)

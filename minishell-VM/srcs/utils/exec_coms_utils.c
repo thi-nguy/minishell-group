@@ -45,7 +45,7 @@ char	*handle_relative_case(char *fname, t_list *envlist)
 	char	*slash;
 	char	*res;
 	char	*result;
-	char 	*env_val;
+	char	*env_val;
 
 	if (*fname != '.')
 		return (NULL);
@@ -53,7 +53,7 @@ char	*handle_relative_case(char *fname, t_list *envlist)
 	chdir(fname);
 	res = getcwd(NULL, 0);
 	env_val = get_env_val("PWD", envlist);
-	chdir((const char*)env_val);
+	chdir((const char *)env_val);
 	result = ft_strjoin(res, slash);
 	free(res);
 	res = NULL;

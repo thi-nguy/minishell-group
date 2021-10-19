@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:25 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/19 13:57:24 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 21:43:25 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,31 +20,23 @@ char	*replace_one(char *input, char *ptr, t_list *envlist, int dquot)
 	char	*after_env;
 	char	*env_val;
 	char	*first;
-	char	*second;
 	char	*result;
 
 	before = ft_substr(input, 0, ptr - input);
 	after_env = get_after_env(ptr);
 	env_val = env_val_name(input, ptr, after_env, envlist);
 	first = ft_strjoin(before, env_val);
-	after_env = ft_strdup(after_env);
-	second = replace_envs(after_env, envlist, dquot);
-	if (input)
-		free(input);
-	result = ft_strjoin(first, second);
-	free(before);
-	before = NULL;
 	if (*env_val)
 	{
 		free(env_val);
 		env_val = NULL;
 	}
-	free(first);
-	first = NULL;
-	free(after_env);
-	after_env = NULL;
-	free(second);
-	second = NULL;
+	after_env = ft_strdup(after_env);
+	env_val = replace_envs(after_env, envlist, dquot);
+	if (input)
+		free(input);
+	result = ft_strjoin(first, env_val);
+	free_str(&before, &first, &after_env, &env_val);
 	return (result);
 }
 

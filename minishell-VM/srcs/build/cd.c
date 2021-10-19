@@ -62,8 +62,8 @@ int	handle_inval_cd(char *path, char *oldpwd)
 
 int	is_arg_valid(char **path)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (path[i] != NULL)
 		i++;

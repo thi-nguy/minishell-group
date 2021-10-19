@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:16 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/19 14:29:44 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 21:54:02 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,10 @@ char	*find_exec(t_list *env, char *filename)
 {
 	char			*foundpath;
 	char			*path_copy;
-	char			*path_copy2;
+	char			*result;
 
 	foundpath = NULL;
+	result = NULL;
 	while (env != NULL && ft_strncmp(env->content, "PATH", 4) != 0)
 		env = env->next;
 	if (env == NULL)
@@ -105,18 +106,24 @@ char	*find_exec(t_list *env, char *filename)
 	path_copy += 5;
 	foundpath = check_path(path_copy, filename);
 	if (foundpath)
-	{
-		path_copy -= 5;
-		free(path_copy);
-		path_copy = ft_strjoin(foundpath, "/");
-		path_copy2 = ft_strjoin(path_copy, filename);
-		free(path_copy);
-		path_copy = NULL;
-		return (path_copy2);
-	}
+		result = get_path(foundpath, filename);
 	path_copy -= 5;
 	free(path_copy);
 	path_copy = NULL;
-	g_excd_sig.excode = 127;
-	return (NULL);
+	if (result == NULL)
+		g_excd_sig.excode = 127;
+	return (result);
+}
+
+char	*get_path(char *foundpath, char *filename)
+{
+	char	*path_copy;
+	char	*result;
+
+	result = NULL;
+	path_copy = ft_strjoin(foundpath, "/");
+	result = ft_strjoin(path_copy, filename);
+	free(path_copy);
+	path_copy = NULL;
+	return (result);
 }

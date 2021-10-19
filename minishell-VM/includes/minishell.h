@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:25:56 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/19 15:15:21 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 22:17:57 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,8 @@ void	error_exit(void);
 t_list	*converter(char **envp);
 
 void	arraddelem(char ***array, char *string);
-int	    is_arg_valid(char **path);
+int		is_arg_valid(char **path);
+char	*get_path(char *foundpath, char *filename);
+int		is_valid_str(char *str);
+int		check_quotes(char *str);
 #endif
