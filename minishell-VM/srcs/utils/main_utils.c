@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:53 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/17 14:40:51 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 13:36:44 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,23 @@ void	free_ast(t_ast *ast)
 char	*handle_two_left(char *str, int redir_fd, t_list *envlist)
 {
 	char	*tmp;
+	char	*join_str;
+	char	*join_str2;
 
 	tmp = ft_strjoin("\"", str);
-	free(str);
-	str = ft_strjoin(tmp, "\"");
+	//free(str);
+	join_str = ft_strjoin(tmp, "\"");
 	free(tmp);
-	tmp = replace_envs(str, envlist, 0);
-	str = ft_strtrim(tmp, "\"");
+	tmp = replace_envs(join_str, envlist, 0);
+	join_str2 = ft_strtrim(tmp, "\"");
 	free(tmp);
-	ft_putstr_fd(str, redir_fd);
+	tmp = NULL;
+	free(join_str);
+	join_str = NULL;
+	ft_putstr_fd(join_str2, redir_fd);
 	ft_putchar_fd('\n', redir_fd);
-	free(str);
+	free(join_str2);
+	join_str2 = NULL;
+	// free(str);
 	return (NULL);
 }

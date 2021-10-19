@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_redir.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idamouttou <idamouttou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:11 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/18 10:30:28 by idamouttou       ###   ########.fr       */
+/*   Updated: 2021/10/19 13:37:19 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	two_left_exec(t_ast *self, t_list *envlist)
 		str = readline("heredoc>");
 		if (ft_strcmp(str, self->left->token) == 0)
 			break ;
-		str = handle_two_left(str, redir_fd, envlist);
+		handle_two_left(str, redir_fd, envlist);
 	}
 	free(str);
 	close(redir_fd);
