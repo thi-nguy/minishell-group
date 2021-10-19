@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:53 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/19 13:36:44 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 13:42:32 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,22 +82,18 @@ char	*handle_two_left(char *str, int redir_fd, t_list *envlist)
 {
 	char	*tmp;
 	char	*join_str;
-	char	*join_str2;
 
 	tmp = ft_strjoin("\"", str);
-	//free(str);
 	join_str = ft_strjoin(tmp, "\"");
 	free(tmp);
 	tmp = replace_envs(join_str, envlist, 0);
-	join_str2 = ft_strtrim(tmp, "\"");
+	free(join_str);
+	join_str = ft_strtrim(tmp, "\"");
 	free(tmp);
 	tmp = NULL;
+	ft_putstr_fd(join_str, redir_fd);
+	ft_putchar_fd('\n', redir_fd);
 	free(join_str);
 	join_str = NULL;
-	ft_putstr_fd(join_str2, redir_fd);
-	ft_putchar_fd('\n', redir_fd);
-	free(join_str2);
-	join_str2 = NULL;
-	// free(str);
 	return (NULL);
 }

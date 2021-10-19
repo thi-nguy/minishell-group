@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:59 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/18 11:59:57 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 13:54:45 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ char	*env_val_name(char *input, char *ptr, char *after_env, t_list *envlist)
 		env_name = ft_substr(input, (ptr - input + 1), after_env - ptr - 1);
 		env_val = get_env_val(env_name, envlist);
 		free(env_name);
+		env_name = NULL;
 	}
 	else
 		env_val = ft_strdup("$");

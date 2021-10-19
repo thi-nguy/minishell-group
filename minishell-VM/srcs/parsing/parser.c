@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:25 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/18 17:34:15 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 13:57:24 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,19 @@ char	*replace_one(char *input, char *ptr, t_list *envlist, int dquot)
 	if (input)
 		free(input);
 	result = ft_strjoin(first, second);
-	if (*env_val)
-		free(env_val);
-	free(second);
-	free(first);
 	free(before);
+	before = NULL;
+	if (*env_val)
+	{
+		free(env_val);
+		env_val = NULL;
+	}
+	free(first);
+	first = NULL;
+	free(after_env);
+	after_env = NULL;
+	free(second);
+	second = NULL;
 	return (result);
 }
 
