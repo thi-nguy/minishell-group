@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:16 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/17 12:11:04 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/19 14:29:44 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ char	*find_exec(t_list *env, char *filename)
 {
 	char			*foundpath;
 	char			*path_copy;
+	char			*path_copy2;
 
 	foundpath = NULL;
 	while (env != NULL && ft_strncmp(env->content, "PATH", 4) != 0)
@@ -102,13 +103,16 @@ char	*find_exec(t_list *env, char *filename)
 	}
 	path_copy = ft_strdup(env->content);
 	path_copy += 5;
-	foundpath = (check_path(path_copy, filename));
+	foundpath = check_path(path_copy, filename);
 	if (foundpath)
 	{
 		path_copy -= 5;
 		free(path_copy);
+		path_copy = ft_strjoin(foundpath, "/");
+		path_copy2 = ft_strjoin(path_copy, filename);
+		free(path_copy);
 		path_copy = NULL;
-		return (ft_strjoin(ft_strjoin(foundpath, "/"), filename));
+		return (path_copy2);
 	}
 	path_copy -= 5;
 	free(path_copy);
