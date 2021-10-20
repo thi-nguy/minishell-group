@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:25 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/19 21:43:25 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/20 10:55:29 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ char	*replace_envs(char *input, t_list *envlist, int dquot)
 	char	*ptr;
 	char	*result;
 
-	if (!input)
-		return (NULL);
 	ptr = input;
 	while (*ptr)
 	{

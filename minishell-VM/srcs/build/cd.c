@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:29:10 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/19 15:22:16 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/20 10:42:26 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,7 @@ int	my_cd(char **path, t_list *envlist)
 		return (1);
 	}
 	path++;
-	if (*path == NULL)
-		tmp = get_env_val("HOME", envlist);
-	else
-		tmp = ft_strdup(*path);
-	tmp = skip_char(tmp, ' ');
+	tmp = get_tmp(*path, envlist);
 	oldpwd = getcwd(NULL, 0);
 	ch = chdir(tmp);
 	free(tmp);

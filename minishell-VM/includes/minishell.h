@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:25:56 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/19 22:17:57 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/20 10:42:51 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,5 @@ int		is_arg_valid(char **path);
 char	*get_path(char *foundpath, char *filename);
 int		is_valid_str(char *str);
 int		check_quotes(char *str);
+char	*get_tmp(char *path, t_list *envlist);
 #endif
