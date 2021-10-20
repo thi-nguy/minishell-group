@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:29:10 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/20 10:42:26 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/20 12:22:57 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	is_arg_valid(char **path)
 	i = 0;
 	while (path[i] != NULL)
 		i++;
-	if (i > 1)
+	if (i > 2)
 		return (0);
 	return (1);
 }
