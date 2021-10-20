@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:31:04 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/19 22:18:50 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/20 11:59:14 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	main(int argc, char const *argv[], char const *envp[])
 	temp = NULL;
 	str = NULL;
 	ast = NULL;
-	signal(SIGQUIT, signal_handler);
+	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, signal_handler);
 	envlist = converter((char **)envp);
 	main_cycle(str, temp, envlist, ast);

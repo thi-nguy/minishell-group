@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:02 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/19 11:30:41 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/20 11:56:44 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	cmd_exec(t_ast *self, t_list *envlist)
 		exec_builtin(self->token, args, envlist);
 	else
 		get_exit_code(self->token, args, envlist);
-	signal(SIGQUIT, signal_handler);
+	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, signal_handler);
 	free_arr(args);
 }

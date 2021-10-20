@@ -6,7 +6,7 @@
 /*   By: thi-nguy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 23:30:44 by idamouttou        #+#    #+#             */
-/*   Updated: 2021/10/19 14:24:51 by thi-nguy         ###   ########.fr       */
+/*   Updated: 2021/10/20 12:00:30 by thi-nguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,12 @@ int	my_execve(char *file, char **args, t_list *envlist)
 	char	**envarr;
 
 	signal(SIGINT, SIG_IGN);
-	signal(SIGQUIT, signal_handler);
+	signal(SIGQUIT, SIG_IGN);
 	pid = fork();
 	if (pid == 0)
 	{	
 		signal(SIGINT, SIG_DFL);
-		signal(SIGQUIT, signal_handler);
+		signal(SIGQUIT, SIG_DFL);
 		envarr = listtoarr(envlist);
 		if (*file == '.')
 			path = handle_relative_case(file, envlist);
